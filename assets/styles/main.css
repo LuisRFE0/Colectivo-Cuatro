@@ -1,0 +1,10 @@
+:root {
+
+    --rosa: #FAB4C8;
+    --amarillo: #FAF0A0;
+    --azul: #0A3C82;
+}
+
+h1 {
+    color: var(--azul);
+}
