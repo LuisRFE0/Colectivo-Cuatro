@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+
+:root {
+
+    --rosa: #FAB4C8;
+    --amarillo: #FAF0A0;
+    --azul: #0A3C82;
+}
+
+* {
+    font-family: 'raleway';
+    font-weight: 400;
+}
+
+.navegacion {
+    background-color: var(--azul);
+    color: white;
+
+}
+
+
+.nav-item {
+    margin-left: 16px;
+}
+
+.color-texto {
+    color: var(--rosa);
+}
+
+.color-texto:hover {
+    background-color: var(--rosa);
+    border-radius: 10px;
+    color: var(--azul);
+}
+
+.colectivo {
+    font-family: "raleway", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 24px;
+    margin-left: 10px;
+
+}
+
+.color-texto-logo {
+    display: flex;
+    font-family: raleway;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--rosa);
+    margin-left: 32px;
+}
+
+.color-texto-logo:hover {
+    text-decoration: none;
+    color: var(--rosa);
+}
