@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+@import url("nosotros.css");
+
+:root {
+
+    --rosa: #FAB4C8;
+    --amarillo: #FAF0A0;
+    --azul: #0A3C82;
+}
+
+* {
+    font-family: 'raleway';
+    font-weight: 400;
+}
+
+.navegacion {
+    background-color: var(--azul);
+    color: white;
+
+}
+
+
+.nav-item {
+    margin-left: 16px;
+}
+
+.color-texto {
+    color: var(--rosa);
+}
+
+.color-texto:hover {
+    background-color: var(--rosa);
+    border-radius: 10px;
+    color: var(--azul);
+}
+
+.colectivo {
+    font-family: "raleway", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 24px;
+    margin-left: 10px;
+
+}
+
+.color-texto-logo {
+    display: flex;
+    font-family: raleway;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--rosa);
+    margin-left: 32px;
+}
+
+.color-texto-logo:hover {
+    text-decoration: none;
+    color: var(--rosa);
+}
+
+.linea-footer {
+    margin: 0 auto;
+    border-top: 1px solid var(--azul);
+    width: 90%;
+}
+
+#footer-title {
+    margin-top: 16px;
+    font-variant-caps: all-small-caps;
+    font-size: 40px;
+}
+
+#footer-button {
+    width: 50%;
+    background-color: var(--rosa);
+    color: var(--azul);
+    border-radius: 45px;
+    margin-top: 16px;
+    border: none;
+
+}
+
+.footer-conteiner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
