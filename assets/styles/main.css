@@ -61,6 +61,7 @@
     margin: 0 auto;
     border-top: 1px solid var(--azul);
     width: 90%;
+    border-bottom: 1px solid var(--azul);
 }
 
 #footer-title {
@@ -85,4 +86,47 @@
     align-items: center;
     justify-content: center;
 
+}
+
+.enlaces {
+    width: 100%;
+}
+
+.enlaces-local {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.enlace-local {
+    text-decoration: none;
+    color: var(--azul);
+
+}
+
+.icon-local {
+    width: 4%;
+}
+
+.iconos-local {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+/* Estilos para dispositivos de escritorio */
+
+/* Estilos para tabletas */
+@media only screen and (max-width: 768px) {
+
+    /* Agrega aquí tus estilos para tabletas */
+    .icon-local {
+        width: 20px;
+    }
+
+}
+
+/* Estilos para teléfonos móviles */
+@media only screen and (max-width: 480px) {
+    /* Agrega aquí tus estilos para teléfonos móviles */
 }
