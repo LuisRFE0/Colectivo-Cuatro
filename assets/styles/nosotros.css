@@ -1,0 +1,17 @@
+.img-round-local {
+    border-radius: 50%;
+    padding: 8px 16px;
+    width: 60%;
+}
+
+.card-local {
+    background-color: pink;
+    width: 300px;
+    height: 260px;
+}
+
+/*.card-col {
+    width: 300px;
+    padding-right: 32px;
+}
+*/
