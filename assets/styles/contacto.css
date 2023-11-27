@@ -1,0 +1,36 @@
+:root {
+
+    --rosa: #FAB4C8;
+    --amarillo: #FAF0A0;
+    --azul: #0A3C82;
+}
+
+
+#logo-contacto {
+    margin-top: 16px;
+    height: 160px;
+    width: 160px;
+}
+
+#form-container {
+    border-left: 2px solid var(--azul); 
+}
+
+@media only screen and (max-width: 768px) {
+
+    /* Agrega aquí tus estilos para tabletas */
+    #form-container {
+        border-left: none;
+        width: 90%; 
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    /* Agrega aquí tus estilos para teléfonos móviles */
+    #form-container {
+        border-left: none;
+        width: 90%;
+        margin-left: 32px;
+    }
+}
