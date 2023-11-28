@@ -13,7 +13,7 @@
 }
 
 #form-container {
-    border-left: 2px solid var(--azul); 
+    border-left: 2px solid var(--azul);
 }
 
 @media only screen and (max-width: 768px) {
@@ -21,16 +21,16 @@
     /* Agrega aquí tus estilos para tabletas */
     #form-container {
         border-left: none;
-        width: 90%; 
+        width: 90%;
     }
 
 }
 
 @media only screen and (max-width: 480px) {
+
     /* Agrega aquí tus estilos para teléfonos móviles */
     #form-container {
         border-left: none;
         width: 90%;
-        margin-left: 32px;
     }
 }
