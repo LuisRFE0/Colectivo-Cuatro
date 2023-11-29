@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (!validarFormulario(datosFormulario)) {
-            alertaHtml('Favor de llenar todos los campos');
+           return;
         } else {
-            console.log('Correo enviado ');
+           enviarCorreoServidor(datosFormulario)
         }
     }
 
@@ -30,11 +30,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**funcion para validar campos vacios del formulario */
     function validarFormulario({ nombre, correo, telefono, mensaje }) {
-        if (nombre === '' || correo === '' || telefono === '' || mensaje === '') {
-            return false;
-        } else {
-            return true;
+        let respuesta=true;
+        if (nombre === '' ){
+            alertaHtml("Favor de llenar el nombre", "error");
+            respuesta= false;
+            
+        } 
+        else if (correo === '' ){
+            alertaHtml("Favor de llenar el correo", "error");
+            respuesta= false;
         }
+        else if (telefono === '' ){
+            alertaHtml("Favor de llenar el telefono", "error");
+            respuesta= false;
+        }
+        else if (mensaje === '' ){
+            alertaHtml("Favor de llenar el mensaje", "error");
+            respuesta= false;
+        }
+        
+        else {
+            respuesta=true;
+        }
+
+
+        return respuesta;
     }
     //hola
 
@@ -42,14 +62,18 @@ document.addEventListener('DOMContentLoaded', () => {
      * Alrta que se imprime en el html de contacto cuando falta algun campo
      * @param {mensaje de erro} mensaje 
      */
-    function alertaHtml(mensaje) {
+    function alertaHtml(mensaje, estado) {
         limpiarAlerta();
-
         const alertaMensaje = document.createElement('p');
-        alertaMensaje.classList.add('bg-danger', 'text-white');
+        if(estado==="error"){
+        alertaMensaje.classList.add('bg-danger', 'text-white', "alerta-error");
+       
+        }else{
+            alertaMensaje.classList.add('bg-success', 'text-white', "alerta-error"); 
+        }
         alertaMensaje.textContent = mensaje;
         alerta.appendChild(alertaMensaje);
-
+        
         setTimeout(() => {
             alertaMensaje.remove();
         }, 3000);
@@ -66,5 +90,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+function enviarCorreoServidor({nombre, correo, mensaje, telefono}){
+    fetch("https://formsubmit.co/ajax/vicmoysen@hotmail.com", {
+    method: "POST",
+    headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+        name: nombre,
+        email: correo,
+        message: mensaje,
+        tel: telefono
+
+    })
+})
+    .then(response => response.json())
+    .then(data => {
+        alertaHtml("Mensaje enviado!", "correcto" );
+        document.getElementById("form").reset();
+    })
+    .catch(error => console.log(error));
+ }
 
 });
+ 

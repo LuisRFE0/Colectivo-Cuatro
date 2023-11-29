@@ -36,7 +36,13 @@
 label {
     font-weight: 700;
 }
-
+.alerta-error{
+    width: 100%;
+    padding: 1rem;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 58px;
+}
 @media only screen and (max-width: 768px) {
 
     /* Agrega aquí tus estilos para tabletas */
