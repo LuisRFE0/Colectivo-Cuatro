@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const formulario = document.querySelector('#form');
     const alerta = document.querySelector('#alerta');
+    const btnContacto = document.querySelector('#btn-contacto');
     //---------------------------eventListeners-------------------------
     formulario.addEventListener('submit', enviarCorreo);
 
@@ -18,10 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
             mensaje: document.querySelector('#inpuntTextArea4').value
         }
 
+
+
         if (!validarFormulario(datosFormulario)) {
-           return;
+            return;
         } else {
-           enviarCorreoServidor(datosFormulario)
+            btnContacto.disabled = true;
+            enviarCorreoServidor(datosFormulario)
         }
     }
 
@@ -30,27 +34,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**funcion para validar campos vacios del formulario */
     function validarFormulario({ nombre, correo, telefono, mensaje }) {
-        let respuesta=true;
-        if (nombre === '' ){
+        let respuesta = true;
+        if (nombre === '') {
             alertaHtml("Favor de llenar el nombre", "error");
-            respuesta= false;
-            
-        } 
-        else if (correo === '' ){
+            respuesta = false;
+
+        }
+        else if (correo === '') {
             alertaHtml("Favor de llenar el correo", "error");
-            respuesta= false;
+            respuesta = false;
         }
-        else if (telefono === '' ){
+        else if (telefono === '') {
             alertaHtml("Favor de llenar el telefono", "error");
-            respuesta= false;
+            respuesta = false;
         }
-        else if (mensaje === '' ){
+        else if (mensaje === '') {
             alertaHtml("Favor de llenar el mensaje", "error");
-            respuesta= false;
+            respuesta = false;
         }
-        
+
         else {
-            respuesta=true;
+            respuesta = true;
         }
 
 
@@ -65,15 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function alertaHtml(mensaje, estado) {
         limpiarAlerta();
         const alertaMensaje = document.createElement('p');
-        if(estado==="error"){
-        alertaMensaje.classList.add('bg-danger', 'text-white', "alerta-error");
-       
-        }else{
-            alertaMensaje.classList.add('bg-success', 'text-white', "alerta-error"); 
+        if (estado === "error") {
+            alertaMensaje.classList.add('bg-danger', 'text-white', "alerta-error");
+
+        } else {
+            alertaMensaje.classList.add('bg-success', 'text-white', "alerta-error");
         }
         alertaMensaje.textContent = mensaje;
         alerta.appendChild(alertaMensaje);
-        
+
         setTimeout(() => {
             alertaMensaje.remove();
         }, 3000);
@@ -90,28 +94,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-function enviarCorreoServidor({nombre, correo, mensaje, telefono}){
-    fetch("https://formsubmit.co/ajax/vicmoysen@hotmail.com", {
-    method: "POST",
-    headers: { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-    },
-    body: JSON.stringify({
-        name: nombre,
-        email: correo,
-        message: mensaje,
-        tel: telefono
+    function enviarCorreoServidor({ nombre, correo, mensaje, telefono }) {
+        fetch("https://formsubmit.co/ajax/vicmoysen@hotmail.com", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                name: nombre,
+                email: correo,
+                message: mensaje,
+                tel: telefono
 
-    })
-})
-    .then(response => response.json())
-    .then(data => {
-        alertaHtml("Mensaje enviado!", "correcto" );
-        document.getElementById("form").reset();
-    })
-    .catch(error => console.log(error));
- }
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                alertaHtml("Mensaje enviado!", "correcto");
+                document.getElementById("form").reset();
+                btnContacto.disabled = false;
+
+            })
+            .catch(error => console.log(error));
+    }
 
 });
- 
