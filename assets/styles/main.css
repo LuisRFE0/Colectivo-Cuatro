@@ -22,8 +22,15 @@
 
 
 .nav-item {
-    margin-left: 16px;
+    margin: 8px 8px 0px 8px;
+    padding-left: 8px;
 }
+
+.nav-link {
+    padding: 8px;
+    font-weight: 700;
+}
+
 
 .color-texto {
     color: var(--rosa);
@@ -50,7 +57,7 @@
     font-weight: 600;
     text-decoration: none;
     color: var(--rosa);
-    margin-left: 32px;
+    margin: 8px 0px 8px 32px;
 }
 
 .color-texto-logo:hover {
@@ -77,6 +84,9 @@
     color: var(--azul);
     border-radius: 45px;
     margin-top: 16px;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: 700;
     border: none;
 
 }
@@ -115,6 +125,12 @@
     align-items: center;
 }
 
+.navbar-toggler-icon {
+    color: var(--rosa)!important;
+}
+.navbar .navbar-toggler:focus {
+    color: var(--rosa);
+  }  
 /* Estilos para dispositivos de escritorio */
 
 /* Estilos para tabletas */

@@ -12,16 +12,41 @@
     width: 160px;
 }
 
+#contact-header {
+    font-weight: 900;
+    font-size: 52px;
+}
+
+#info-container {
+    padding: 3rem 2rem;
+}
+
+#info-header {
+    font-weight: 700;
+}
+
+#info-description {
+    padding-top: 1rem;
+}
 #form-container {
     border-left: 2px solid var(--azul);
+    padding: 3rem 2rem;
+}
+
+label {
+    font-weight: 700;
 }
 
 @media only screen and (max-width: 768px) {
 
     /* Agrega aquí tus estilos para tabletas */
+    #info-container {
+        padding: 1rem 2rem;
+    }
     #form-container {
         border-left: none;
         width: 90%;
+        padding: 1rem 2rem;
     }
 
 }
