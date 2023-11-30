@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
 @import url("nosotros.css");
 @import url("contacto.css");
+@import url("formProducto.css");
 
 :root {
 
@@ -126,11 +127,36 @@
 }
 
 .navbar-toggler-icon {
-    color: var(--rosa)!important;
+    color: var(--rosa) !important;
 }
+
 .navbar .navbar-toggler:focus {
     color: var(--rosa);
-  }  
+}
+
+.border-radius-local {
+    border-radius: 58px;
+}
+
+.btn-local {
+    text-decoration: none;
+    border-radius: 58px;
+    border: none;
+    padding: 10px;
+    width: 80%;
+}
+
+.btn-view-local {
+    background-color: var(--azul);
+    color: white;
+}
+
+.btn-warning-local {
+    background-color: var(--amarillo);
+    color: var(--azul);
+    font-weight: 700;
+}
+
 /* Estilos para dispositivos de escritorio */
 
 /* Estilos para tabletas */

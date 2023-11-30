@@ -1,0 +1,43 @@
+:root {
+
+    --rosa: #FAB4C8;
+    --amarillo: #FAF0A0;
+    --azul: #0A3C82;
+}
+
+.titulo-admin {
+    color: var(--rosa);
+    font-weight: 700;
+}
+
+.largo-div {
+    width: 33%;
+}
+
+.border-input {
+    border: var(--azul) solid 1px;
+}
+
+.input-contacto {
+    border: var(--azul) solid 1px;
+    height: 50px;
+    width: 300px;
+}
+
+/* Estilos para tabletas */
+@media only screen and (max-width: 768px) {
+
+    /* Agrega aquí tus estilos para tabletas */
+    .largo-div {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        width: 200px;
+    }
+
+}
+
+/* Estilos para teléfonos móviles */
+@media only screen and (max-width: 480px) {
+    /* Agrega aquí tus estilos para teléfonos móviles */
+}
