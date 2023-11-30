@@ -132,6 +132,7 @@
 
 .navbar .navbar-toggler:focus {
     color: var(--rosa);
+
 }
 
 .border-radius-local {
@@ -160,6 +161,22 @@
     background-color: var(--amarillo);
     color: var(--azul);
     font-weight: 700;
+
+}
+
+.carousel-local {
+    width: 100%;
+}
+
+.index-texto-welcome {
+    margin: 3rem;
+    text-align: center;
+}
+
+.img-index-welcome {
+    margin: 3rem;
+    border-radius: 32px;
+    width: 500px;
 }
 
 /* Estilos para dispositivos de escritorio */
