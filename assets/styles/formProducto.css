@@ -24,6 +24,11 @@
     width: 300px;
 }
 
+
+.largo {
+    width: 40%;
+}
+
 /* Estilos para tabletas */
 @media only screen and (max-width: 768px) {
 
