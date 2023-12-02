@@ -11,34 +11,51 @@
 }
 
 .largo-div {
-    width: 33%;
+    width: 300px;
 }
 
 .border-input {
     border: var(--azul) solid 1px;
 }
 
+.label-local {
+    width: 30%;
+}
+
 .input-contacto {
     border: var(--azul) solid 1px;
-    height: 50px;
+    height: 40px;
     width: 300px;
+
+}
+
+.form-container-local {
+    width: 85%;
+    margin: 0 auto;
+
 }
 
 
 .largo {
-    width: 40%;
+    width: 200px;
+
+}
+
+.options {
+    justify-content: center;
+}
+
+.mensaje-alerta p {
+    padding: 1rem;
+    border-radius: 20px;
+    font-weight: 700;
 }
 
 /* Estilos para tabletas */
 @media only screen and (max-width: 768px) {
 
     /* Agrega aquí tus estilos para tabletas */
-    .largo-div {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 auto;
-        width: 200px;
-    }
+
 
 }
 

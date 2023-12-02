@@ -166,17 +166,41 @@
 
 .carousel-local {
     width: 100%;
+
+}
+
+.carousel-local img {
+
+    height: 700px;
 }
 
 .index-texto-welcome {
-    margin: 3rem;
+    margin: 2.5rem;
     text-align: center;
 }
 
 .img-index-welcome {
     margin: 3rem;
     border-radius: 32px;
-    width: 500px;
+    width: 70%;
+    transition: transform 0.6s ease;
+}
+
+.img-index-welcome:hover {
+    transform: scale(1.1);
+    box-shadow: 10px 10px 5px 0px var(--rosa);
+}
+
+.img-foot {
+    width: 1000px;
+    height: 300px;
+    border-radius: 58px;
+    transition: transform 0.6s ease;
+}
+
+.img-foot:hover {
+    transform: scale(1.1);
+    box-shadow: 10px 10px 5px 0px var(--amarillo);
 }
 
 /* Estilos para dispositivos de escritorio */
@@ -189,9 +213,31 @@
         width: 20px;
     }
 
+    .carousel-local img {
+        height: 500px;
+    }
+
+    .img-foot {
+        width: 600px;
+        height: 200px;
+        border-radius: 20px;
+        transition: transform 0.6s ease;
+    }
+
 }
 
 /* Estilos para teléfonos móviles */
 @media only screen and (max-width: 480px) {
+
     /* Agrega aquí tus estilos para teléfonos móviles */
+    .carousel-local img {
+        height: 300px;
+    }
+
+    .img-foot {
+        width: 300px;
+        height: 100px;
+        border-radius: 20px;
+        transition: transform 0.6s ease;
+    }
 }
