@@ -7,7 +7,6 @@
 
 
 .img-round-local {
-    
     padding: 16px 16px;
     width: 180px;
     height: 180px;
@@ -16,8 +15,11 @@
 .card-local {
     background-color: var(--azul);
     width: 350px;
-    height: 455px;
+    height: 420px;
     color: white;
+    border-radius: 32px;
+    border-radius: 24px;
+    
 }
 
 .card-local:hover{
@@ -25,11 +27,20 @@
     color: var(--azul);
 }
 
-
-
-
-/*.card-col {
-    width: 300px;
-    padding-right: 32px;
+.card-body {
+    background-color: #FFFFFF;
+    color: var(--azul);
+    border-radius: 0px 0px 24px 24px;
 }
-*/
+
+.card-body h4 {
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.scrum-role {
+    font-weight: 700;
+}
+
+
+
