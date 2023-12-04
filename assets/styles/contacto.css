@@ -43,6 +43,18 @@ label {
     font-weight: 700;
     border-radius: 58px;
 }
+
+.btn-contacto {
+    text-decoration: none;
+    border-radius: 58px;
+    border: none;
+    padding: 0.5rem 2rem;
+    width: auto;
+    background-color: var(--azul);
+    color: white;
+    font-weight: 700;
+}
+
 @media only screen and (max-width: 768px) {
 
     /* Agrega aquí tus estilos para tabletas */

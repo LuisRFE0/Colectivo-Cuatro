@@ -26,6 +26,12 @@
     padding-left: 8px;
 }
 
+.nav-item .active {
+    background-color: var(--rosa);
+    border-radius: 10px;
+    color: var(--azul)!important;
+
+}
 .nav-link {
     padding: 8px;
     font-weight: 700;
@@ -86,6 +92,7 @@
     margin-top: 16px;
     padding: 8px;
     font-size: 16px;
+    font-style: bold;
     font-weight: 700;
     border: none;
 
@@ -174,32 +181,40 @@
 }
 
 .index-texto-welcome {
-    margin: 2.5rem;
+    margin: 3rem 3rem;
     text-align: center;
 }
 
 .img-index-welcome {
-    margin: 3rem;
+    margin: 3rem 1rem;
     border-radius: 32px;
     width: 70%;
     transition: transform 0.6s ease;
 }
 
-.img-index-welcome:hover {
-    transform: scale(1.1);
-    box-shadow: 10px 10px 5px 0px var(--rosa);
+.index-text-welcome2-mobile {
+    margin: 1rem 3rem;
+    text-align: center;
+    display: none;
 }
 
+.img-index-welcome:hover {
+    transform: scale(1.05);
+    box-shadow: 2px 2px 5px 0px var(--rosa);
+}
+
+
 .img-foot {
-    width: 1000px;
-    height: 300px;
+    width: 85%;
+    height: 240px;
+    margin: 2rem 0rem;
     border-radius: 58px;
     transition: transform 0.6s ease;
 }
 
 .img-foot:hover {
-    transform: scale(1.1);
-    box-shadow: 10px 10px 5px 0px var(--amarillo);
+    transform: scale(1.05);
+    box-shadow: 2px 2px 5px 0px var(--amarillo);
 }
 
 /* Estilos para dispositivos de escritorio */
@@ -233,10 +248,19 @@
         height: 300px;
     }
 
+    .index-text-welcome2 {
+        display: none;
+    }
+    
+    .index-text-welcome2-mobile {
+        display: inline;
+    }
+
     .img-foot {
-        width: 300px;
+        width: 90%;
         height: 100px;
         border-radius: 20px;
+        margin: 0.5rem 0;
         transition: transform 0.6s ease;
     }
 }
