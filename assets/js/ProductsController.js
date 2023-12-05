@@ -1,12 +1,12 @@
 class ProductsController {
     
-    constructor(currentId = 0) {
-        this.items = [];
-        this.currentId = currentId;
+    constructor() {
+        this.productsList = [];
     }
 
     addItem(name, description, image, price, stock) {
-        const item = {
+        const product = {
+            
             "id": getDate(), 
             "name": name,
             "description": description, 
@@ -14,60 +14,77 @@ class ProductsController {
             "price": price,
             "stock": stock
         };
+        
+        this.productsList.push(product);
+        
+        localStorage.setItem("products", JSON.stringify(this.productsList));
+    }
 
-        this.items.push(item);
+    async loadItemsFromJSON(callback) {
+        try {
+            const response = await fetch('../js/productos.json');
+            const products =  await response.json();
+        
+            for (var i = 0, size = products.length; i < size; i++) {
+                const product = products[i];
+                console.log(JSON.parse(product));
+                this.items.push(product);
+            }
+        } catch(error) {
+            console.log(error);
+        }
+        callback();
     }
 
     loadItemsFromLocalStorage() {
-        const storageItems = localStorage.getItem("items")
+        const storageItems = localStorage.getItem("products")
         if (storageItems) {
-            const items = JSON.parse(storageItems)
-            for (var i = 0, size = items.length; i < size; i++) {
-                const item = items[i];
-                this.items.push(item);
+            const products = JSON.parse(storageItems)
+            for (var i = 0, size = products.length; i < size; i++) {
+                const product = products[i];
+                this.productsList.push(product);
             }
         }
     }
 
     deleteProduct(id) {
         let index = -1;
-        let filteredObj = this.items.find(function(item, i){
-            if(item.id === id){
+
+        let filteredObj = this.productsList.find(function(product, i){
+            if(product.id === id){
               index = i;
-              return index;
+              return index;  // Regresa -1 si no encuentra el producto con el id
             }
-          });
-          
-        this.items.splice(index, 1);
+        });
+
+        this.productsList.splice(index, 1);
     }
 
     deleteAllProducts() {
-        this.items = [];
-        console.log(this.items)
+        this.productsList = [];
+        console.log(this.productsList)
     }
 
     updateProduct(id, name, description, image, price, stock) {
         let index = -1;
-        let filteredObj = this.items.find(function(item, i){
-            if(item.id === id){
+        let filteredObj = this.productsList.find(function(product, i){
+            if(product.id === id){
               index = i;
               return index;
                 }
-            });
+        });
 
-        this.items[index].name = name;
-        this.items[index].description = description;
-        this.items[index].image = image;
-        this.items[index].price = price;
-        this.items[index].stock = stock;
+        this.producstList[index].name = name;
+        this.producstList[index].description = description;
+        this.producstList[index].image = image;
+        this.producstList[index].price = price;
+        this.producstList[index].stock = stock;
         
+        
+        localStorage.setItem("products", JSON.stringify(this.productsList));
     }
 }
 
 function getDate() {
-    return new Date().getTime();
+    return new Date().getTime();s
 }
-
-/* fetch('../js/productos.json')
-.then(response => response.text())
-.then(text => console.log(text[0])); */

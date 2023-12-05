@@ -1,0 +1,132 @@
+:root {
+    --rosa: #FAB4C8;
+    --amarillo: #FAF0A0;
+    --azul: #0A3C82;
+}
+
+.filter {
+    cursor: pointer;
+    color: var(--azul);
+    margin-right: 1rem;
+}
+
+.card-product {
+    width: 300px;
+    height: auto;
+    border: 1px solid var(--rosa);
+    border-radius: 32px;
+    box-shadow: 2px 2px 2px rgba(203, 203, 203, 0.468);
+    margin-top: 2rem;
+}
+
+
+.card-product:hover {    
+    box-shadow: 2px 2px 2px var(--rosa);
+}
+
+.card-img-top {
+    
+    border-radius: 32px 32px 0px 0px;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-product-body {
+    padding: 16px;
+}
+
+.card-product-title {
+    font-size:large;
+    font-weight: 700;
+    color: var(--azul);
+
+}
+
+.card-product-description {
+    font-size: 12px;
+    font-weight: 200;
+    overflow: hidden;
+    text-align: justify;
+    padding: 8px 8px 0px 8px;
+    border-top: 1px solid var(--rosa);
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+            line-clamp: 3; 
+    -webkit-box-orient: vertical;
+}
+
+.card-product-price {
+    pointer-events: none;
+    font-size: large;
+    color: var(--azul);    
+    font-weight: 700;
+}
+
+.card-currency {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.card-sign {
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+.card-add-cart {
+    float:inline-end;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    color: var(--azul);
+    cursor: pointer;
+}
+
+.list-page {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.list-page li {
+    font-size: 20px;
+    display: inline-block;
+    margin:  3rem 0.5rem 1rem;
+    color: var(--azul);
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.list-page .active {
+    background-color: var(--rosa);
+}
+
+@media only screen and (max-width: 768px) {
+
+    /* Agrega aquí tus estilos para tabletas */
+    .card-product {
+        width: 220px;
+        height: auto;
+    }
+
+
+}
+
+@media only screen and (max-width: 480px) {
+
+    /* Agrega aquí tus estilos para teléfonos móviles */
+    .card-product {
+        width: 180px;
+        height: auto;
+    }
+
+    .card-product-title {
+        display: none;
+    }
+
+    .card-product-description {
+        display: none;
+    }
+}
