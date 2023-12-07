@@ -20,21 +20,21 @@ class ProductsController {
         localStorage.setItem("products", JSON.stringify(this.productsList));
     }
 
-    async loadItemsFromJSON(callback) {
-        try {
-            const response = await fetch('../js/productos.json');
-            const products =  await response.json();
+    // async loadItemsFromJSON(callback) {
+    //     try {
+    //         const response = await fetch('../js/productos.json');
+    //         const products =  await response.json();
         
-            for (var i = 0, size = products.length; i < size; i++) {
-                const product = products[i];
-                console.log(JSON.parse(product));
-                this.items.push(product);
-            }
-        } catch(error) {
-            console.log(error);
-        }
-        callback();
-    }
+    //         for (var i = 0, size = products.length; i < size; i++) {
+    //             const product = products[i];
+    //             console.log(JSON.parse(product));
+    //             this.items.push(product);
+    //         }
+    //     } catch(error) {
+    //         console.log(error);
+    //     }
+    //     callback();
+    // }
 
     loadItemsFromLocalStorage() {
         const storageItems = localStorage.getItem("products")
@@ -84,6 +84,8 @@ class ProductsController {
         localStorage.setItem("products", JSON.stringify(this.productsList));
     }
 }
+
+
 
 function getDate() {
     return new Date().getTime();s
