@@ -50,7 +50,8 @@
 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link color-texto" href="../cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+                            <a class="nav-link color-texto" href="../cart.html"><i
+                                    class="fa-solid fa-cart-shopping"></i></a>
 
                         </li>
 
@@ -60,25 +61,25 @@
             </div>
         </nav>
     </header>
-    <main class=" ">
+    <main class=" text ">
         <h1 class="text-center mt-5 titulo-admin">Bienvenido administrador</h1>
 
         <section class="buscar row  mt-5 d-flex justify-content-center align-items-center">
             <div class="col-sm-12 col-md-4  largo-div">
                 <label class="col-md-12 text-center" for="">Buscar producto:</label>
-                <input class="col-md-12 form-control border-input border-radius-local" type=" text"
+                <input class="col-md-12 form-control border-input border-radius-local" type=" text" id="input-buscar"
                     placeholder="Playera">
             </div>
             <div class=" col-sm-6 col-md-4 text-center largo-div mt-3">
-                <button class="btn-local btn-view-local" href="">Ver producto</button>
+                <button class="btn-local btn-view-local" id="btn-gets-product">Obtener producto</button>
             </div>
 
             <div class="col-sm-6 col-md-4 text-center largo-div mt-3">
-                <button class="btn-local btn-warning-local">Eliminar producto</button>
+                <button class="btn-local btn-warning-local" id="btn-delete-product">Eliminar producto</button>
             </div>
-
-        </section>
-
+        </section><br><br>
+        <div class="alerta-find text-center " style="width: 300px; margin: 0 auto;"> </div>
+        <br><br>
         <section class="container   d-flex justify-content-center align-items-center ">
 
             <form id="form" class="mt-2 text-center " action="#">
@@ -114,7 +115,7 @@
                     <button type="submit"
                         class="mx-5 my-2 col-sm-12 col-md-6  btn-view-local border-radius-local no-borde largo">Cargar
                         Productos</button>
-                    <button
+                    <button type="button"
                         class="mx-6 my-2 col-sm-12 col-md-6  btn-warning-local border-radius-local no-borde largo">Actualizar
                         Productos</button>
                 </div>
@@ -155,7 +156,7 @@
     <br>
     <!-- Bootstrap JavaScript Libraries -->
 
-   
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
         </script>
@@ -163,7 +164,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
-       <script src="../../js/admin/formProduct.js"></script>
+    <script src="../../js/admin/formProduct.js"></script>
 </body>
 
 </html>
