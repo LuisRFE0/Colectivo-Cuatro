@@ -1,4 +1,5 @@
 //VARIABLES Y EVENTOS*******************
+const inId = document.querySelector('#input-id');
 const product = document.querySelector('#input-product');
 const description = document.querySelector('#input-description');
 const image = document.querySelector('#input-image');
@@ -8,11 +9,13 @@ const btnDelete = document.querySelector('#btn-delete-product');
 const form = document.querySelector('#form');
 const mensajeDiv = document.querySelector('.mensaje-alerta');
 const alertaForm = document.querySelector('.alerta-find');
-const inputBuscar = document.querySelector('#input-buscar')
+const inputBuscar = document.querySelector('#input-buscar');
+const btnUpdate = document.querySelector('#btn-update');
 
 form.addEventListener('submit', validarform);
 btnDelete.addEventListener('click', eliminarProduct);
 inputGetProduct.addEventListener('click', obtenerProducto);
+btnUpdate.addEventListener('click', actualizarProduct);
 
 
 //***********************CLASE*************************************//
@@ -20,6 +23,9 @@ class ProductsController {
     constructor() {
         this.productsList = [];
     }
+
+
+
 
     addItem(name, description, image, stock) {
         const product = {
@@ -37,13 +43,39 @@ class ProductsController {
             this.productsList = [...nuevoObj];
             this.productsList.push(product);
             localStorage.setItem("products", JSON.stringify(this.productsList));
-            console.log(this.productsList);
+            limpiarCampos();
+            imprimmirAlertaHtml('Elemento agregado correctamente', 'succes');
         } else {
             this.productsList.push(product);
             localStorage.setItem("products", JSON.stringify(this.productsList));
         }
 
     }
+
+
+    updateProduct(id) {
+        const productObj = {
+            id: parseInt(inId.value),
+            name: product.value,
+            descriptions: description.value,
+            images: image.value,
+            stocks: stock.value
+        }
+
+        const nuevoObj = localStorage.getItem("products") ? JSON.parse(localStorage.getItem("products")) : [];
+        //obtener indice del obj
+        const indiceObjeto = nuevoObj.findIndex(objeto => objeto.id === id);
+
+        nuevoObj[indiceObjeto] = { ...nuevoObj[indiceObjeto], ...productObj };
+        console.log(nuevoObj);
+
+        localStorage.setItem("products", JSON.stringify(nuevoObj));
+        limpiarCampos();
+        imprimmirAlertaHtml('Elemento actualizado correctamente', 'succes');
+
+    }
+
+
 
 
     deleteProduct(id) {
@@ -72,13 +104,33 @@ class ProductsController {
 
     getProduct(ID) {
         const nuevoObj = localStorage.getItem("products") ? JSON.parse(localStorage.getItem("products")) : [];
+        if (nuevoObj.length > 0) {
 
-        const { id, name, descriptions, images, stocks } = nuevoObj.filter(product => product.id == ID)[0];
+            if (nuevoObj.some(elemento => elemento.id === ID)) {
+                const datos = nuevoObj.filter(product => product.id == ID);
+                const { id, name, descriptions, images, stocks } = datos[0];
+                limpiarCampos();
+                inId.value = id;
+                product.value = name;
+                description.value = descriptions;
+                image.value = images;
+                stock.value = stocks;
 
-        product.value = name;
-        description.value = descriptions;
-        image.value = images;
-        stock.value = stocks;
+            } else {
+                limpiarHtml2();
+                const alertaElement = document.createElement('P');
+                alertaElement.classList.add('bg-danger', 'text-white');
+                alertaElement.textContent = 'No existe el id del producto';
+                alertaForm.appendChild(alertaElement);
+
+                setTimeout(() => {
+                    alertaElement.remove();
+                }, 3000);
+            }
+
+        } else {
+            console.log('No hay productos');
+        }
 
 
 
@@ -97,8 +149,18 @@ class ProductsController {
 const productsController = new ProductsController();
 function addProduct({ name, description, image, stock }) {
 
-    productsController.addItem(name, description, image, stock);
+    if (!verificarExistenciaProducto(name)) {
+
+        productsController.addItem(name, description, image, stock);
+    } else {
+        imprimmirAlertaHtml('Este producto ya existe', 'error');
+        limpiarCampos();
+    }
+
+
 }
+
+
 
 function eliminarProduct() {
     const id = parseInt(inputBuscar.value);
@@ -111,8 +173,32 @@ function obtenerProducto() {
     productsController.getProduct(id)
 }
 
+function actualizarProduct() {
+    const id = parseInt(inId.value);
+    if (inId.value == '') {
+        imprimmirAlertaHtml('No hay producto para actualizar', 'error')
+    } else {
+        productsController.updateProduct(id);
+    }
 
 
+}
+
+function verificarExistenciaProducto(producto) {
+    const nuevoObj = localStorage.getItem("products") ? JSON.parse(localStorage.getItem("products")) : [];
+    return nuevoObj.some(elemento => elemento.name === producto);
+
+}
+
+
+function limpiarCampos() {
+    product.value = '';
+    description.value = ''
+    image.value = ''
+    stock.value = ''
+    inputBuscar.value = ''
+    inId.value = '';
+}
 
 //*****************************FUNCIONES DE VALIDACION**************************************************** 
 
@@ -153,7 +239,7 @@ function validarCampos({ name, description, image, stock }) {
         imprimmirAlertaHtml('Favor de llenar la cantidad', 'error');
         validacion = false;
     } else {
-        imprimmirAlertaHtml('Elemento agregado correctamente', 'succes');
+
         validacion = true;
     }
     return validacion;
