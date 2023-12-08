@@ -1,4 +1,3 @@
-
 //VARIABLES Y EVENTOS*******************
 const inId = document.querySelector('#input-id');
 const labelId = document.querySelector('.id-hidden');
@@ -142,7 +141,6 @@ class ProductsController {
 
         } else {
             console.log('No hay productos');
-
         }
 
     }
@@ -230,7 +228,7 @@ function limpiarCampos() {
 
 
 
-//*****************************FUNCIONES DE VALIDACION****************************************************
+//*****************************FUNCIONES DE VALIDACION**************************************************** 
 
 
 

@@ -9,10 +9,10 @@ class ProductsController {
 
             "id": getDate(),
             "name": name,
-            "description": description,
-            "image": image,
-            "price": price,
-            "stock": stock
+            "descriptions": description,
+            "images": image,
+            "prices": price,
+            "stocks": stock
         };
 
         this.productsList.push(product);
