@@ -1,18 +1,19 @@
 //VARIABLES Y EVENTOS*******************
 const inId = document.querySelector('#input-id');
+const labelId = document.querySelector('.id-hidden');
 const product = document.querySelector('#input-product');
 const description = document.querySelector('#input-description');
 const image = document.querySelector('#input-image');
 const stock = document.querySelector('#input-stock');
 const inputGetProduct = document.querySelector('#btn-gets-product');
 const btnDelete = document.querySelector('#btn-delete-product');
-const form = document.querySelector('#form');
+const form = document.querySelector('#btn-create');
 const mensajeDiv = document.querySelector('.mensaje-alerta');
 const alertaForm = document.querySelector('.alerta-find');
 const inputBuscar = document.querySelector('#input-buscar');
 const btnUpdate = document.querySelector('#btn-update');
 
-form.addEventListener('submit', validarform);
+form.addEventListener('click', validarform);
 btnDelete.addEventListener('click', eliminarProduct);
 inputGetProduct.addEventListener('click', obtenerProducto);
 btnUpdate.addEventListener('click', actualizarProduct);
@@ -23,9 +24,6 @@ class ProductsController {
     constructor() {
         this.productsList = [];
     }
-
-
-
 
     addItem(name, description, image, stock) {
         const product = {
@@ -39,12 +37,13 @@ class ProductsController {
 
 
         if (localStorage.getItem("products")) {
-            const nuevoObj = JSON.parse(localStorage.getItem("products"));
-            this.productsList = [...nuevoObj];
             this.productsList.push(product);
             localStorage.setItem("products", JSON.stringify(this.productsList));
             limpiarCampos();
             imprimmirAlertaHtml('Elemento agregado correctamente', 'succes');
+
+
+
         } else {
             this.productsList.push(product);
             localStorage.setItem("products", JSON.stringify(this.productsList));
@@ -62,16 +61,16 @@ class ProductsController {
             stocks: stock.value
         }
 
-        const nuevoObj = localStorage.getItem("products") ? JSON.parse(localStorage.getItem("products")) : [];
-        //obtener indice del obj
-        const indiceObjeto = nuevoObj.findIndex(objeto => objeto.id === id);
 
-        nuevoObj[indiceObjeto] = { ...nuevoObj[indiceObjeto], ...productObj };
-        console.log(nuevoObj);
+        const indiceObjeto = this.productsList.findIndex(objeto => objeto.id === id);
 
-        localStorage.setItem("products", JSON.stringify(nuevoObj));
+        this.productsList[indiceObjeto] = { ...this.productsList[indiceObjeto], ...productObj };
+
+
+        localStorage.setItem("products", JSON.stringify(this.productsList));
         limpiarCampos();
         imprimmirAlertaHtml('Elemento actualizado correctamente', 'succes');
+        btnUpdate.style.display = 'none';
 
     }
 
@@ -80,15 +79,22 @@ class ProductsController {
 
     deleteProduct(id) {
         limpiarHtml2();
+        //Obtengo los datos de localStorage
+
         const nuevoObj = localStorage.getItem("products") ? JSON.parse(localStorage.getItem("products")) : [];
         const verificarId = nuevoObj.some(elemento => elemento.id === id);
         const alertaElement = document.createElement('P');
 
+
+
         if (verificarId) {
-            const eliminarObj = nuevoObj.filter(product => product.id != id);
+            const eliminarObj = this.productsList.filter(product => product.id != id);
             localStorage.setItem("products", JSON.stringify(eliminarObj));
             alertaElement.classList.add('bg-success', 'text-white');
             alertaElement.textContent = 'Producto borrado correctamente';
+            limpiarCampos();
+
+
         } else {
             alertaElement.classList.add('bg-danger', 'text-white');
             alertaElement.textContent = 'No existe el producto';
@@ -103,11 +109,12 @@ class ProductsController {
 
 
     getProduct(ID) {
-        const nuevoObj = localStorage.getItem("products") ? JSON.parse(localStorage.getItem("products")) : [];
-        if (nuevoObj.length > 0) {
 
-            if (nuevoObj.some(elemento => elemento.id === ID)) {
-                const datos = nuevoObj.filter(product => product.id == ID);
+
+        if (this.productsList.length > 0) {
+
+            if (this.productsList.some(elemento => elemento.id === ID)) {
+                const datos = this.productsList.filter(product => product.id == ID);
                 const { id, name, descriptions, images, stocks } = datos[0];
                 limpiarCampos();
                 inId.value = id;
@@ -115,6 +122,10 @@ class ProductsController {
                 description.value = descriptions;
                 image.value = images;
                 stock.value = stocks;
+                btnUpdate.style.display = 'block';
+                btnDelete.style.display = 'block';
+                labelId.style.display = 'block';
+                inId.style.display = 'block';
 
             } else {
                 limpiarHtml2();
@@ -132,25 +143,34 @@ class ProductsController {
             console.log('No hay productos');
         }
 
-
-
-
     }
 
+    loadItemsFromLocalStorage() {
+        const storageItems = localStorage.getItem("products")
+        if (storageItems) {
+            const products = JSON.parse(storageItems)
+            for (let i = 0, size = products.length; i < size; i++) {
+                const product = products[i];
+                this.productsList.push(product);
+            }
+        }
+    }
 
 
 
 }
 
 
-
 //***************************Funciones para el producto***************************************************** */
 
 const productsController = new ProductsController();
+productsController.loadItemsFromLocalStorage();
+
+
+
 function addProduct({ name, description, image, stock }) {
 
     if (!verificarExistenciaProducto(name)) {
-
         productsController.addItem(name, description, image, stock);
     } else {
         imprimmirAlertaHtml('Este producto ya existe', 'error');
@@ -163,7 +183,7 @@ function addProduct({ name, description, image, stock }) {
 
 
 function eliminarProduct() {
-    const id = parseInt(inputBuscar.value);
+    const id = parseInt(inId.value);
     productsController.deleteProduct(id);
 }
 
@@ -198,7 +218,15 @@ function limpiarCampos() {
     stock.value = ''
     inputBuscar.value = ''
     inId.value = '';
+
+    btnUpdate.style.display = 'none';
+    btnDelete.style.display = 'none';
+    labelId.style.display = 'none';
+    inId.style.display = 'none';
 }
+
+
+
 
 //*****************************FUNCIONES DE VALIDACION**************************************************** 
 

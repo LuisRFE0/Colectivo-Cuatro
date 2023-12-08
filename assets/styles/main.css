@@ -29,9 +29,10 @@
 .nav-item .active {
     background-color: var(--rosa);
     border-radius: 10px;
-    color: var(--azul)!important;
+    color: var(--azul) !important;
 
 }
+
 .nav-link {
     padding: 8px;
     font-weight: 700;
@@ -161,12 +162,30 @@
 .btn-view-local {
     background-color: var(--azul);
     color: white;
+    font-weight: 700;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.234);
+}
+
+.btn-view-local:hover {
+    background-color: var(--rosa);
+    color: var(--azul);
+    font-weight: 700;
+    box-shadow: none;
 }
 
 .btn-warning-local {
     background-color: var(--amarillo);
     color: var(--azul);
     font-weight: 700;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.234);
+
+}
+
+.btn-warning-local:hover {
+    background-color: var(--rosa);
+    color: var(--azul);
+    font-weight: 700;
+    box-shadow: none;
 
 }
 
@@ -251,7 +270,7 @@
     .index-text-welcome2 {
         display: none;
     }
-    
+
     .index-text-welcome2-mobile {
         display: inline;
     }

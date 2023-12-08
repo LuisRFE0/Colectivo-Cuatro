@@ -1,22 +1,22 @@
 class ProductsController {
-    
+
     constructor() {
         this.productsList = [];
     }
 
     addItem(name, description, image, price, stock) {
         const product = {
-            
-            "id": getDate(), 
+
+            "id": getDate(),
             "name": name,
-            "description": description, 
+            "description": description,
             "image": image,
             "price": price,
             "stock": stock
         };
-        
+
         this.productsList.push(product);
-        
+
         localStorage.setItem("products", JSON.stringify(this.productsList));
     }
 
@@ -24,7 +24,7 @@ class ProductsController {
     //     try {
     //         const response = await fetch('../js/productos.json');
     //         const products =  await response.json();
-        
+
     //         for (var i = 0, size = products.length; i < size; i++) {
     //             const product = products[i];
     //             console.log(JSON.parse(product));
@@ -40,7 +40,7 @@ class ProductsController {
         const storageItems = localStorage.getItem("products")
         if (storageItems) {
             const products = JSON.parse(storageItems)
-            for (var i = 0, size = products.length; i < size; i++) {
+            for (let i = 0, size = products.length; i < size; i++) {
                 const product = products[i];
                 this.productsList.push(product);
             }
@@ -50,10 +50,10 @@ class ProductsController {
     deleteProduct(id) {
         let index = -1;
 
-        let filteredObj = this.productsList.find(function(product, i){
-            if(product.id === id){
-              index = i;
-              return index;  // Regresa -1 si no encuentra el producto con el id
+        let filteredObj = this.productsList.find(function (product, i) {
+            if (product.id === id) {
+                index = i;
+                return index;  // Regresa -1 si no encuentra el producto con el id
             }
         });
 
@@ -67,11 +67,11 @@ class ProductsController {
 
     updateProduct(id, name, description, image, price, stock) {
         let index = -1;
-        let filteredObj = this.productsList.find(function(product, i){
-            if(product.id === id){
-              index = i;
-              return index;
-                }
+        let filteredObj = this.productsList.find(function (product, i) {
+            if (product.id === id) {
+                index = i;
+                return index;
+            }
         });
 
         this.producstList[index].name = name;
@@ -79,8 +79,8 @@ class ProductsController {
         this.producstList[index].image = image;
         this.producstList[index].price = price;
         this.producstList[index].stock = stock;
-        
-        
+
+
         localStorage.setItem("products", JSON.stringify(this.productsList));
     }
 }
@@ -88,5 +88,5 @@ class ProductsController {
 
 
 function getDate() {
-    return new Date().getTime();s
+    return new Date().getTime(); s
 }
