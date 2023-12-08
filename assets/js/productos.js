@@ -19,6 +19,7 @@ function addItemCard(product) {
 
     </article>`
     productsContainer.innerHTML += productHTML;
+
 }
 
 function loadStorageSampleData() {
@@ -134,6 +135,29 @@ async function loadCardsListFromItemsController() {
     <li  class="active">2</li>
     <li>3</li>
     </ul>`
+
+    addClickEvent();
+    loadItem();
+}
+
+function addClickEvent() {
+    productsController.productsList.map(product => {
+        const parent = document.getElementById(`${product.id}`);
+        parent.addEventListener('click', handleClick, false);
+    });
+
+
+    function handleClick(e) {
+        let { id, tagName, parentNode } = e.target;
+        id = tagName === 'DIV' ? id : parentNode.id;
+
+        const sizeWidth = window.innerWidth;
+        if (sizeWidth <= 480) {
+            const product = productsController.productsList.filter(product => product['id'] == id)[0];
+            openModal(product)
+        }
+
+    }
 }
 
 function addProduct(name, description, image, price, stock) {
@@ -151,12 +175,82 @@ function deleteAllProducts() {
     productsController.deleteAllProducts();
 }
 
+function openModal(product)  {
+        var productModal = $('#productModal');
+        productModal.find('.modal-title').text(`${product.name}`);
+        productModal.find('.modal-description').text(`${product.description}`);
+        productModal.find('.modal-img').attr('src', product.image);
+        productModal.find('.modal-sign').text('$ ');
+        productModal.find('.modal-price').text(`${product.price}.°°`);
+        productModal.find('.modal-currency').text('mxn');
+        productModal.modal('show');
+    
+}
+
+
+// Funciones para controlar la paginación
+let thisPage = 1;
+let limit = 8; // Limita a 8 resultados por página
+const loadItem = () => {
+    // Obtiene todos los cards existentes 
+    let list = document.querySelectorAll('.card-product'); 
+    let beginGet = limit * (thisPage-1);
+    let endGet = limit * thisPage - 1;
+    
+    list.forEach((item, key) => {
+        if(key >= beginGet && key <= endGet) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    })
+    listPage();
+}
+
+
+const listPage = () => {
+        let list = document.querySelectorAll('.card-product'); 
+        let count = Math.ceil(list.length/ limit);
+        console.log(count);
+        document.querySelector('.list-page').innerHTML = '';
+
+        
+        if(thisPage != 1){
+            let prev = document.createElement('li');
+            prev.innerText = '<';
+            prev.setAttribute('onclick', "changePage(" + (thisPage - 1) + ")");
+            document.querySelector('.list-page').appendChild(prev);
+        }
+     
+        for(i = 1; i <= count; i++){
+            let newPage = document.createElement('li');
+            newPage.innerText = i;
+            if(i == thisPage){
+                newPage.classList.add('active');
+            }
+            newPage.setAttribute('onclick', "changePage(" + i + ")");
+            document.querySelector('.list-page').appendChild(newPage);
+        }
+    
+       if(thisPage != count){
+            let next = document.createElement('li');
+            next.innerText = '>';
+            next.setAttribute('onclick', "changePage(" + (thisPage + 1) + ")");
+            document.querySelector('.list-page').appendChild(next);
+        } 
+}
+    
+const changePage = i => {
+        thisPage = i;
+        loadItem();
+        // Cuando se cambia de página regresa a la posición 80 en pixeles de la altura de la página
+        document.body.scrollTop = 80;
+        document.documentElement.scrollTop = 80;
+}
 
 loadStorageSampleData();
 productsController.loadItemsFromLocalStorage();
 loadCardsListFromItemsController();
-
-console.log(productsController.productsList)    
 //productsController.loadItemsFromJSON(loadCardsListFromItemsController);
 addProduct("Bolsa Futuro", "Lorem ipsum,  dolor sit amet consectetur  dolor sit amet consectetur  dolor sit amet consectetur  dolor sit amet consectetur", "../images/products-images/bolsa-futuro.jpg", 299, 52);
 //deleteProduct(461196)
