@@ -1,4 +1,5 @@
 
+
 const productsController = new ProductsController();
 
 
@@ -22,104 +23,104 @@ function addItemCard(product) {
 
 }
 
-function loadStorageSampleData() {
-    if (!localStorage.getItem("products")) {
-        const sampleProducts = [
-            {
-                "id": 1160263,
-                "name": "Bolsa Futuro",
-                "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
-                "image": "../images/products-images/bolsa-futuro.jpg",
-                "price": 299,
-                "stock": 30
-            },
-            {
-                "id": 461196,
-                "name": "Bolsa Willys",
-                "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
-                "image": "../images/products-images/bolsa-willys.jpg",
-                "price": 299,
-                "stock": 30
-            },
-            {
-                "id": 35345,
-                "name": "Bolsa Horizonte",
-                "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
-                "image": "../images/products-images/bolsa-horizonte.jpg",
-                "price": 299,
-                "stock": 30
-            },
-            {
-                "id": 65613153,
-                "name": "Playera Antidepresivos",
-                "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
-                "image": "../images/products-images/playera-antidepresivos-2.jpg",
-                "price": 299,
-                "stock": 30
-            },
-            {
-                "id": 63513,
-                "name": "Playera Benoni",
-                "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
-                "image": "../images/products-images/playera-benoni-2.jpg",
-                "price": 299,
-                "stock": 30
-            },
-            {
-                "id": 861352,
-                "name": "Playera Boyera" ,
-                "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
-                "image": "../images/products-images/playera-boyera-2.jpg",
-                "price": 299,
-                "stock": 30
-            },
-            {
-                "id": 136813,
-                "name": "Playera Jacarandas Blanca",
-                "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
-                "image": "../images/products-images/playera-jacarandas-blanca.jpg",
-                "price": 299,
-                "stock": 30
-            },
-            {
-                "id": 1384815,
-                "name": "Playera Masuku",
-                "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
-                "image": "../images/products-images/playera-masuku-2.jpg",
-                "price": 299,
-                "stock": 30
-            },
-            {
-                "id": 63313,
-                "name": "Playera Vocho Amarilla",
-                "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
-                "image": "../images/products-images/playera-vocho-amarilla.jpg",
-                "price": 299,
-                "stock": 30
-            },
-            {
-                "id": 62638613,
-                "name": "Playera Jacarandas Negro",
-                "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
-                "image": "../images/products-images/playera-jacarandas-negro.jpg",
-                "price": 299,
-                "stock": 30
-            },
-            {
-                "id": 63313,
-                "name": "Playera Vocho Rosa",
-                "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
-                "image": "../images/products-images/playera-vocho-rosa.jpg",
-                "price": 299,
-                "stock": 30
-            }
-            
+// function loadStorageSampleData() {
+//     if (!localStorage.getItem("products")) {
+//         const sampleProducts = [
+//             {
+//                 "id": 1160263,
+//                 "name": "Bolsa Futuro",
+//                 "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
+//                 "image": "../images/products-images/bolsa-futuro.jpg",
+//                 "price": 299,
+//                 "stock": 30
+//             },
+//             {
+//                 "id": 461196,
+//                 "name": "Bolsa Willys",
+//                 "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
+//                 "image": "../images/products-images/bolsa-willys.jpg",
+//                 "price": 299,
+//                 "stock": 30
+//             },
+//             {
+//                 "id": 35345,
+//                 "name": "Bolsa Horizonte",
+//                 "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
+//                 "image": "../images/products-images/bolsa-horizonte.jpg",
+//                 "price": 299,
+//                 "stock": 30
+//             },
+//             {
+//                 "id": 65613153,
+//                 "name": "Playera Antidepresivos",
+//                 "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
+//                 "image": "../images/products-images/playera-antidepresivos-2.jpg",
+//                 "price": 299,
+//                 "stock": 30
+//             },
+//             {
+//                 "id": 63513,
+//                 "name": "Playera Benoni",
+//                 "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
+//                 "image": "../images/products-images/playera-benoni-2.jpg",
+//                 "price": 299,
+//                 "stock": 30
+//             },
+//             {
+//                 "id": 861352,
+//                 "name": "Playera Boyera" ,
+//                 "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
+//                 "image": "../images/products-images/playera-boyera-2.jpg",
+//                 "price": 299,
+//                 "stock": 30
+//             },
+//             {
+//                 "id": 136813,
+//                 "name": "Playera Jacarandas Blanca",
+//                 "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
+//                 "image": "../images/products-images/playera-jacarandas-blanca.jpg",
+//                 "price": 299,
+//                 "stock": 30
+//             },
+//             {
+//                 "id": 1384815,
+//                 "name": "Playera Masuku",
+//                 "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
+//                 "image": "../images/products-images/playera-masuku-2.jpg",
+//                 "price": 299,
+//                 "stock": 30
+//             },
+//             {
+//                 "id": 63313,
+//                 "name": "Playera Vocho Amarilla",
+//                 "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
+//                 "image": "../images/products-images/playera-vocho-amarilla.jpg",
+//                 "price": 299,
+//                 "stock": 30
+//             },
+//             {
+//                 "id": 62638613,
+//                 "name": "Playera Jacarandas Negro",
+//                 "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
+//                 "image": "../images/products-images/playera-jacarandas-negro.jpg",
+//                 "price": 299,
+//                 "stock": 30
+//             },
+//             {
+//                 "id": 63313,
+//                 "name": "Playera Vocho Rosa",
+//                 "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
+//                 "image": "../images/products-images/playera-vocho-rosa.jpg",
+//                 "price": 299,
+//                 "stock": 30
+//             }
 
 
-        ];
-        localStorage.setItem("products", JSON.stringify(sampleProducts));
-    }
-}
+
+//         ];
+//         localStorage.setItem("products", JSON.stringify(sampleProducts));
+//     }
+// }
 
 
 async function loadCardsListFromItemsController() {
@@ -127,7 +128,7 @@ async function loadCardsListFromItemsController() {
         const item = productsController.productsList[i];
         addItemCard(item);
     }
-    
+
     const productsContainer = document.querySelector('.products-container');
 
     productsContainer.innerHTML += `<ul class="list-page">
@@ -175,16 +176,16 @@ function deleteAllProducts() {
     productsController.deleteAllProducts();
 }
 
-function openModal(product)  {
-        var productModal = $('#productModal');
-        productModal.find('.modal-title').text(`${product.name}`);
-        productModal.find('.modal-description').text(`${product.description}`);
-        productModal.find('.modal-img').attr('src', product.image);
-        productModal.find('.modal-sign').text('$ ');
-        productModal.find('.modal-price').text(`${product.price}.°°`);
-        productModal.find('.modal-currency').text('mxn');
-        productModal.modal('show');
-    
+function openModal(product) {
+    var productModal = $('#productModal');
+    productModal.find('.modal-title').text(`${product.name}`);
+    productModal.find('.modal-description').text(`${product.description}`);
+    productModal.find('.modal-img').attr('src', product.image);
+    productModal.find('.modal-sign').text('$ ');
+    productModal.find('.modal-price').text(`${product.price}.°°`);
+    productModal.find('.modal-currency').text('mxn');
+    productModal.modal('show');
+
 }
 
 
@@ -193,12 +194,12 @@ let thisPage = 1;
 let limit = 8; // Limita a 8 resultados por página
 const loadItem = () => {
     // Obtiene todos los cards existentes 
-    let list = document.querySelectorAll('.card-product'); 
-    let beginGet = limit * (thisPage-1);
+    let list = document.querySelectorAll('.card-product');
+    let beginGet = limit * (thisPage - 1);
     let endGet = limit * thisPage - 1;
-    
+
     list.forEach((item, key) => {
-        if(key >= beginGet && key <= endGet) {
+        if (key >= beginGet && key <= endGet) {
             item.style.display = 'block';
         } else {
             item.style.display = 'none';
@@ -209,48 +210,50 @@ const loadItem = () => {
 
 
 const listPage = () => {
-        let list = document.querySelectorAll('.card-product'); 
-        let count = Math.ceil(list.length/ limit);
-        console.log(count);
-        document.querySelector('.list-page').innerHTML = '';
+    let list = document.querySelectorAll('.card-product');
+    let count = Math.ceil(list.length / limit);
+    console.log(count);
+    document.querySelector('.list-page').innerHTML = '';
 
-        
-        if(thisPage != 1){
-            let prev = document.createElement('li');
-            prev.innerText = '<';
-            prev.setAttribute('onclick', "changePage(" + (thisPage - 1) + ")");
-            document.querySelector('.list-page').appendChild(prev);
+
+    if (thisPage != 1) {
+        let prev = document.createElement('li');
+        prev.innerText = '<';
+        prev.setAttribute('onclick', "changePage(" + (thisPage - 1) + ")");
+        document.querySelector('.list-page').appendChild(prev);
+    }
+
+    for (i = 1; i <= count; i++) {
+        let newPage = document.createElement('li');
+        newPage.innerText = i;
+        if (i == thisPage) {
+            newPage.classList.add('active');
         }
-     
-        for(i = 1; i <= count; i++){
-            let newPage = document.createElement('li');
-            newPage.innerText = i;
-            if(i == thisPage){
-                newPage.classList.add('active');
-            }
-            newPage.setAttribute('onclick', "changePage(" + i + ")");
-            document.querySelector('.list-page').appendChild(newPage);
-        }
-    
-       if(thisPage != count){
-            let next = document.createElement('li');
-            next.innerText = '>';
-            next.setAttribute('onclick', "changePage(" + (thisPage + 1) + ")");
-            document.querySelector('.list-page').appendChild(next);
-        } 
+        newPage.setAttribute('onclick', "changePage(" + i + ")");
+        document.querySelector('.list-page').appendChild(newPage);
+    }
+
+    if (thisPage != count) {
+        let next = document.createElement('li');
+        next.innerText = '>';
+        next.setAttribute('onclick', "changePage(" + (thisPage + 1) + ")");
+        document.querySelector('.list-page').appendChild(next);
+    }
 }
-    
+
 const changePage = i => {
-        thisPage = i;
-        loadItem();
-        // Cuando se cambia de página regresa a la posición 80 en pixeles de la altura de la página
-        document.body.scrollTop = 80;
-        document.documentElement.scrollTop = 80;
+    thisPage = i;
+    loadItem();
+    // Cuando se cambia de página regresa a la posición 80 en pixeles de la altura de la página
+    document.body.scrollTop = 80;
+    document.documentElement.scrollTop = 80;
 }
 
 loadStorageSampleData();
 productsController.loadItemsFromLocalStorage();
 loadCardsListFromItemsController();
+
+console.log(productsController.productsList)
 //productsController.loadItemsFromJSON(loadCardsListFromItemsController);
 addProduct("Bolsa Futuro", "Lorem ipsum,  dolor sit amet consectetur  dolor sit amet consectetur  dolor sit amet consectetur  dolor sit amet consectetur", "../images/products-images/bolsa-futuro.jpg", 299, 52);
 //deleteProduct(461196)

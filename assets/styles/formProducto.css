@@ -14,42 +14,57 @@
     width: 300px;
 }
 
-.border-input {
-    border: var(--azul) solid 1px;
-}
 
-.label-local {
-    width: 30%;
-}
 
-.input-contacto {
-    border: var(--azul) solid 1px;
-    height: 40px;
+
+
+.form-product label {
+    color: var(--azul);
+    font-weight: 700;
     width: 300px;
-
 }
 
-.form-container-local {
-    width: 85%;
-    margin: 0 auto;
+.form-product input,
+.form-product textarea,
+.border-input,
+#input-buscar {
+    border: var(--azul) solid 1px;
+}
 
+.id-hidden {
+    display: none;
 }
 
 
 .largo {
     width: 200px;
-
+    padding: 8px 16px;
 }
+
+/* .largo-div {
+    justify-content: center;
+} */
 
 .options {
     justify-content: center;
 }
 
-.mensaje-alerta p {
+
+.mensaje-alerta p,
+.alerta-find p {
     padding: 1rem;
     border-radius: 20px;
     font-weight: 700;
 }
+
+#btn-update {
+    display: none;
+}
+
+#btn-delete-product {
+    display: none;
+}
+
 
 /* Estilos para tabletas */
 @media only screen and (max-width: 768px) {
