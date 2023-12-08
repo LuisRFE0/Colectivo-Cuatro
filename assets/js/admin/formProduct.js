@@ -142,14 +142,11 @@ class ProductsController {
 
         } else {
             console.log('No hay productos');
->>>>>>> createProduct
+
         }
 
     }
 
-<<<<<<< HEAD
-});
-=======
     loadItemsFromLocalStorage() {
         const storageItems = localStorage.getItem("products")
         if (storageItems) {
@@ -331,4 +328,3 @@ function limpiarHtml2() {
 
 
 
->>>>>>> createProduct
