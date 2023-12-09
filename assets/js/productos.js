@@ -26,8 +26,6 @@ function addItemCard(product) {
 function loadStorageSampleData() {
     if (!localStorage.getItem("products")) {
         const sampleProducts = [
-
-
             {
                 "id": 461196,
                 "name": "Bolsa Willys",
@@ -101,7 +99,7 @@ function loadStorageSampleData() {
                 "stocks": 30
             },
             {
-                "id": 63313,
+                "id": 633134,
                 "name": "Playera Vocho Rosa",
                 "descriptions": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quisquam ipsum, cupiditate, at, quaerat nobis debitis error eligendi veniam delectus ad ut. Dolor hic quasi possimus accusamus mollitia, est magni?",
                 "images": "../images/products-images/playera-vocho-rosa.jpg",
@@ -116,9 +114,11 @@ function loadStorageSampleData() {
 }
 
 
-async function loadCardsListFromItemsController() {
-    for (var i = 0, size = productsController.productsList.length; i < size; i++) {
-        const item = productsController.productsList[i];
+function loadCardsListFromItemsController() {
+    const obj = JSON.parse(localStorage.getItem('products'))
+    console.log(obj);
+    for (let i = 0, size = obj.length; i < size; i++) {
+        const item = obj[i];
         addItemCard(item);
     }
 
@@ -154,26 +154,28 @@ function addClickEvent() {
     }
 }
 
-function addProduct(name, description, image, price, stock) {
-    productsController.addItem(name, description, image, price, stock);
-}
+// function addProduct(name, description, image, price, stock) {
+//     productsController.addItem(name, description, image, price, stock);
+// }
 
-function deleteProduct(id) {
-    productsController.deleteProduct(id);
-}
 
-function updateProduct(id, name, description, image, price, stock) {
-    productsController.updateProduct(id, name, description, image, price, stock);
-}
-function deleteAllProducts() {
-    productsController.deleteAllProducts();
-}
+
+// function deleteProduct(id) {
+//     productsController.deleteProduct(id);
+// }
+
+// function updateProduct(id, name, description, image, price, stock) {
+//     productsController.updateProduct(id, name, description, image, price, stock);
+// }
+// function deleteAllProducts() {
+//     productsController.deleteAllProducts();
+// }
 
 function openModal(product) {
     var productModal = $('#productModal');
     productModal.find('.modal-title').text(`${product.name}`);
-    productModal.find('.modal-description').text(`${product.description}`);
-    productModal.find('.modal-img').attr('src', product.image);
+    productModal.find('.modal-description').text(`${product.descriptions}`);
+    productModal.find('.modal-img').attr('src', product.images);
     productModal.find('.modal-sign').text('$ ');
     productModal.find('.modal-price').text(`${product.price}.°°`);
     productModal.find('.modal-currency').text('mxn');
@@ -205,7 +207,6 @@ const loadItem = () => {
 const listPage = () => {
     let list = document.querySelectorAll('.card-product');
     let count = Math.ceil(list.length / limit);
-    console.log(count);
     document.querySelector('.list-page').innerHTML = '';
 
 
@@ -246,7 +247,7 @@ loadStorageSampleData();
 productsController.loadItemsFromLocalStorage();
 loadCardsListFromItemsController();
 
-console.log(productsController.productsList)
+// console.log(productsController.productsList)
 //productsController.loadItemsFromJSON(loadCardsListFromItemsController);
 //deleteProduct(461196)
 //updateProduct(1160263, "Bolsa Futuro 2", "Lorem ipsum, dolor sit amet consectetur", "../images/products-images/bolsa-futuro.jpg", 200, 2);

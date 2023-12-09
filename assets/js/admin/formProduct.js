@@ -5,6 +5,7 @@ const product = document.querySelector('#input-product');
 const description = document.querySelector('#input-description');
 const image = document.querySelector('#input-image');
 const stock = document.querySelector('#input-stock');
+const prices = document.querySelector('#input-price');
 const inputGetProduct = document.querySelector('#btn-gets-product');
 const btnDelete = document.querySelector('#btn-delete-product');
 const form = document.querySelector('#btn-create');
@@ -25,14 +26,15 @@ class ProductsController {
         this.productsList = [];
     }
 
-    addItem(name, description, image, stock) {
+    addItem(name, description, image, stock, price) {
         const product = {
 
             "id": new Date().getTime(),
             "name": name,
             "descriptions": description,
             "images": image,
-            "stocks": stock
+            "stocks": stock,
+            price
         };
 
 
@@ -89,7 +91,9 @@ class ProductsController {
 
         if (verificarId) {
             const eliminarObj = this.productsList.filter(product => product.id != id);
+            this.productsList = [];
             localStorage.setItem("products", JSON.stringify(eliminarObj));
+            this.productsList = JSON.parse(localStorage.getItem('products'));
             alertaElement.classList.add('bg-success', 'text-white');
             alertaElement.textContent = 'Producto borrado correctamente';
             limpiarCampos();
@@ -168,10 +172,10 @@ productsController.loadItemsFromLocalStorage();
 
 
 
-function addProduct({ name, description, image, stock }) {
+function addProduct({ name, description, image, stock, price }) {
 
     if (!verificarExistenciaProducto(name)) {
-        productsController.addItem(name, description, image, stock);
+        productsController.addItem(name, description, image, stock, price);
     } else {
         imprimmirAlertaHtml('Este producto ya existe', 'error');
         limpiarCampos();
@@ -216,6 +220,7 @@ function limpiarCampos() {
     description.value = ''
     image.value = ''
     stock.value = ''
+    prices.value = ''
     inputBuscar.value = ''
     inId.value = '';
 
@@ -239,7 +244,8 @@ function validarform(e) {
         name: product.value,
         description: description.value,
         image: image.value,
-        stock: stock.value
+        stock: stock.value,
+        price: prices.value
     }
     if (validarCampos(productObj)) {
 

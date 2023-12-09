@@ -4,21 +4,21 @@ class ProductsController {
         this.productsList = [];
     }
 
-    addItem(name, description, image, price, stock) {
-        const product = {
+    // addItem(name, description, image, price, stock) {
+    //     const product = {
 
-            "id": getDate(),
-            "name": name,
-            "descriptions": description,
-            "images": image,
-            "prices": price,
-            "stocks": stock
-        };
+    //         "id": getDate(),
+    //         "name": name,
+    //         "descriptions": description,
+    //         "images": image,
+    //         "prices": price,
+    //         "stocks": stock
+    //     };
 
-        this.productsList.push(product);
+    //     this.productsList.push(product);
 
-        localStorage.setItem("products", JSON.stringify(this.productsList));
-    }
+    //     localStorage.setItem("products", JSON.stringify(this.productsList));
+    // }
 
     // async loadItemsFromJSON(callback) {
     //     try {
@@ -47,46 +47,46 @@ class ProductsController {
         }
     }
 
-    deleteProduct(id) {
-        let index = -1;
+    // deleteProduct(id) {
+    //     let index = -1;
 
-        let filteredObj = this.productsList.find(function (product, i) {
-            if (product.id === id) {
-                index = i;
-                return index;  // Regresa -1 si no encuentra el producto con el id
-            }
-        });
+    //     let filteredObj = this.productsList.find(function (product, i) {
+    //         if (product.id === id) {
+    //             index = i;
+    //             return index;  // Regresa -1 si no encuentra el producto con el id
+    //         }
+    //     });
 
-        this.productsList.splice(index, 1);
-    }
+    //     this.productsList.splice(index, 1);
+    // }
 
-    deleteAllProducts() {
-        this.productsList = [];
-        console.log(this.productsList)
-    }
+    // deleteAllProducts() {
+    //     this.productsList = [];
+    //     console.log(this.productsList)
+    // }
 
-    updateProduct(id, name, description, image, price, stock) {
-        let index = -1;
-        let filteredObj = this.productsList.find(function (product, i) {
-            if (product.id === id) {
-                index = i;
-                return index;
-            }
-        });
+    // updateProduct(id, name, description, image, price, stock) {
+    //     let index = -1;
+    //     let filteredObj = this.productsList.find(function (product, i) {
+    //         if (product.id === id) {
+    //             index = i;
+    //             return index;
+    //         }
+    //     });
 
-        this.producstList[index].name = name;
-        this.producstList[index].description = description;
-        this.producstList[index].image = image;
-        this.producstList[index].price = price;
-        this.producstList[index].stock = stock;
+    //     this.producstList[index].name = name;
+    //     this.producstList[index].description = description;
+    //     this.producstList[index].image = image;
+    //     this.producstList[index].price = price;
+    //     this.producstList[index].stock = stock;
 
 
-        localStorage.setItem("products", JSON.stringify(this.productsList));
-    }
+    //     localStorage.setItem("products", JSON.stringify(this.productsList));
+    // }
 }
 
 
 
-function getDate() {
-    return new Date().getTime(); s
-}
+// function getDate() {
+//     return new Date().getTime();
+// }
