@@ -15,7 +15,7 @@
 }
 
 .navegacion {
-    background-color: var(--azul);
+    background-color: var(--azul)!important;
     color: white;
 
 }

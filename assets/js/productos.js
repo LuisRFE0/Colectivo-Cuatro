@@ -9,7 +9,7 @@ function addItemCard(product) {
     const productHTML = `
     <article class="col-6 col-md-4 col-lg-3 card-container">
     <div class="card-product" id="${product.id}">
-     <img src="${product.images}" class="card-img-top" alt="...">
+     <img src="${product.images}" onerror="this.onerror=null; this.src='../images/products-images/img-product-404.jpg'" class="card-img-top" alt="...">
      <div class="card-product-body">
          <h5 class="card-product-title">${product.name}</h5>
          <p class="card-product-description">${product.descriptions}</p>
@@ -154,28 +154,12 @@ function addClickEvent() {
     }
 }
 
-// function addProduct(name, description, image, price, stock) {
-//     productsController.addItem(name, description, image, price, stock);
-// }
-
-
-
-// function deleteProduct(id) {
-//     productsController.deleteProduct(id);
-// }
-
-// function updateProduct(id, name, description, image, price, stock) {
-//     productsController.updateProduct(id, name, description, image, price, stock);
-// }
-// function deleteAllProducts() {
-//     productsController.deleteAllProducts();
-// }
-
 function openModal(product) {
     var productModal = $('#productModal');
     productModal.find('.modal-title').text(`${product.name}`);
     productModal.find('.modal-description').text(`${product.descriptions}`);
     productModal.find('.modal-img').attr('src', product.images);
+    productModal.find('.modal-img').attr('onerror', "this.onerror=null; this.src='../images/products-images/img-product-404.jpg'");
     productModal.find('.modal-sign').text('$ ');
     productModal.find('.modal-price').text(`${product.price}.°°`);
     productModal.find('.modal-currency').text('mxn');
@@ -246,9 +230,3 @@ const changePage = i => {
 loadStorageSampleData();
 productsController.loadItemsFromLocalStorage();
 loadCardsListFromItemsController();
-
-// console.log(productsController.productsList)
-//productsController.loadItemsFromJSON(loadCardsListFromItemsController);
-//deleteProduct(461196)
-//updateProduct(1160263, "Bolsa Futuro 2", "Lorem ipsum, dolor sit amet consectetur", "../images/products-images/bolsa-futuro.jpg", 200, 2);
-//deleteAllProducts();
