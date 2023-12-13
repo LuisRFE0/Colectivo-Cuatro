@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //hola
 
     /**
-     * Alrta que se imprime en el html de contacto cuando falta algun campo
+     * Alerta que se imprime en el html de contacto cuando falta algun campo
      * @param {mensaje de erro} mensaje 
      */
     function alertaHtml(mensaje, estado) {
