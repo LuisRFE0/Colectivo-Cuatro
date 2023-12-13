@@ -1,0 +1,172 @@
+.container-login {
+    margin: 0 auto;
+    height: 100vh;
+    position: relative;
+
+}
+
+.triangulo {
+    position: absolute;
+    float: right;
+    width: 100%;
+    height: 100vh;
+
+    clip-path: polygon(30% 0, 100% 0, 100% 100%, 80% 100%);
+
+
+
+}
+
+.login-welcome {
+    margin: 3rem 0;
+    font-size: 35px;
+}
+
+.form-container {
+    position: absolute;
+    margin: 3rem 0 0 5rem;
+    width: 40%;
+}
+
+.form-container img {
+    margin-left: 5rem;
+    width: 180px;
+}
+
+.color-font-700 {
+    font-weight: 700;
+}
+
+.color-font {
+    font-weight: 700;
+    color: var(--azul);
+}
+
+.btn-login {
+    width: 200px;
+    border: none;
+    background-color: var(--amarillo);
+    padding: 5px 32px;
+    border-radius: 24px;
+    font-weight: 700;
+    color: var(--azul);
+}
+
+.btns-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.btns-login a {
+    text-decoration: none;
+    color: var(--rosa);
+    font-weight: 700;
+}
+
+.btns-login p {
+    margin-top: 16px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .triangulo {
+        height: 500px;
+        clip-path: polygon(35% 0, 100% 0, 100% 100%, 100% 100%);
+
+    }
+
+    .login-welcome {
+        margin: 2rem 0;
+        font-size: 24px;
+    }
+
+    .container-login {
+        margin: 0 auto;
+        height: 750px;
+        position: relative;
+
+    }
+
+    .form-container {
+        position: absolute;
+        margin: 8rem 0 0 6rem;
+        width: 45%;
+    }
+
+    .form-container img {
+        margin-left: .5rem;
+        width: 110px;
+    }
+
+
+}
+
+@media only screen and (max-width: 768px) {
+    .triangulo {
+        height: 50vh;
+        clip-path: polygon(20% 0, 100% 0, 100% 100%, 100% 100%);
+    }
+
+
+    .login-welcome {
+        margin: 2rem 0;
+        font-size: 24px;
+    }
+
+    .container-login {
+        margin: 0 auto;
+        height: 800px;
+        position: relative;
+
+    }
+
+    .form-container {
+        position: absolute;
+        margin: 8rem 0 0 4rem;
+        width: 60%;
+    }
+
+    .form-container img {
+        margin-left: .5rem;
+        width: 110px;
+    }
+
+
+}
+
+/* Estilos para teléfonos móviles */
+@media only screen and (max-width: 540px) {
+
+
+    .login-welcome {
+        margin: 2rem 0;
+        font-size: 24px;
+    }
+
+    .container-login {
+        margin: 0 auto;
+        height: 800px;
+        position: relative;
+
+    }
+
+    .triangulo {
+        height: 35vh;
+        clip-path: polygon(20% 0, 100% 0, 100% 100%, 100% 100%);
+    }
+
+
+    .form-container {
+        position: absolute;
+        margin: 8rem 0 0 4rem;
+        width: 70%;
+    }
+
+    .form-container img {
+        margin-left: .5rem;
+        width: 110px;
+    }
+
+}
