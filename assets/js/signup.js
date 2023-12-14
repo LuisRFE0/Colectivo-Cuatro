@@ -4,16 +4,16 @@ const formulario = document.querySelector('#form');
 const alerta = document.querySelector('#alerta');
 const btnContacto = document.querySelector('#btn-contacto');
 //---------------------------eventListeners-------------------------
-formulario.addEventListener('submit', enviarCorreo);
+formulario.addEventListener('submit', registrar);
 
 
 
 //---------------------------------Funciones----------------------------
-function enviarCorreo(evento) {
+function registrar(evento) {
     evento.preventDefault();
 
 
-     const datosFormulario = {
+    const datosFormulario = {
         name: document.querySelector('#input-nombre').value,
         email: document.querySelector('#input-email').value,
         password: document.querySelector('#input-password').value,
@@ -25,11 +25,20 @@ function enviarCorreo(evento) {
     if (!validarFormulario(datosFormulario)) {
         return;
     } else {
-        console.log("Correcto")
+        registrarUser(datosFormulario);
     }
 
-    
+
 }
+
+function registrarUser(datos) {
+
+    localStorage.setItem('usuario', JSON.stringify(datos));
+    alertaHtml('Usuario agregado correctamente');
+
+
+}
+
 
 function validarFormulario({ name, email, password, confirmPassword }) {
     let respuesta = true;
@@ -50,7 +59,7 @@ function validarFormulario({ name, email, password, confirmPassword }) {
         alertaHtml("Favor de confirmar la contraseña", "error");
         respuesta = false;
     }
-    else if (password !== confirmPassword){
+    else if (password !== confirmPassword) {
         alertaHtml("La contraseña no coincide", "error");
         respuesta = false;
     }
@@ -82,4 +91,11 @@ function alertaHtml(mensaje, estado) {
     setTimeout(() => {
         alertaMensaje.remove();
     }, 3000);
+}
+
+
+function limpiarAlerta() {
+    while (alerta.firstChild) {
+        alerta.removeChild(alerta.firstChild)
+    }
 }

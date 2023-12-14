@@ -1,6 +1,6 @@
 .container-login {
     margin: 0 auto;
-    height: 100vh;
+    height: 800px;
     position: relative;
 
 }
@@ -16,6 +16,7 @@
 
 
 }
+
 
 .login-welcome {
     margin: 3rem 0;
@@ -67,8 +68,21 @@
 }
 
 .btns-login p {
-    margin-top: 16px;
+    margin-top: 12px;
 }
+
+#alerta {
+    margin: 0 auto;
+    max-width: 300px;
+    height: 60px;
+}
+
+#alerta p {
+    max-width: 300px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
 
 @media only screen and (max-width: 1024px) {
     .triangulo {
@@ -84,7 +98,7 @@
 
     .container-login {
         margin: 0 auto;
-        height: 750px;
+        height: 800px;
         position: relative;
 
     }
@@ -117,7 +131,7 @@
 
     .container-login {
         margin: 0 auto;
-        height: 800px;
+        height: 850px;
         position: relative;
 
     }
