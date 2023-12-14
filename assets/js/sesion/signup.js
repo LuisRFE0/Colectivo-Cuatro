@@ -1,5 +1,4 @@
 
-
 const formulario = document.querySelector('#form');
 const alerta = document.querySelector('#alerta');
 const btnContacto = document.querySelector('#btn-contacto');
@@ -9,16 +8,18 @@ formulario.addEventListener('submit', registrar);
 
 
 //---------------------------------Funciones----------------------------
+const signupController = new SignupController();
+
 function registrar(evento) {
     evento.preventDefault();
 
 
-    const datosFormulario = {
+    const datosFormulario = [{
         name: document.querySelector('#input-nombre').value,
         email: document.querySelector('#input-email').value,
         password: document.querySelector('#input-password').value,
         confirmPassword: document.querySelector('#input-confirm-password').value
-    }
+    }]
 
 
 
@@ -33,11 +34,11 @@ function registrar(evento) {
 
 function registrarUser(datos) {
 
-    localStorage.setItem('usuario', JSON.stringify(datos));
-    alertaHtml('Usuario agregado correctamente');
+    signupController.addPerson(datos);
 
 
 }
+
 
 
 function validarFormulario({ name, email, password, confirmPassword }) {
@@ -99,3 +100,6 @@ function limpiarAlerta() {
         alerta.removeChild(alerta.firstChild)
     }
 }
+
+
+signupController.loadPersonFromLocalStorage();
