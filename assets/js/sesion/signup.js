@@ -50,11 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function validarFormulario({ name, email, password, confirmPassword }) {
         let respuesta;
-
+        let myText = "palabravalida";
+        const regexName =  /^([a-zA-ZñÑáéíóúÁÉÍÓÚ])+$/;
         if (name == '') {
             alertaHtml("Favor de llenar el nombre", "error");
             respuesta = false;
-
+        } else if(regexName.test(name)) {
+            alertaHtml("El nombre no puede contener números");
+            respuesta = false; 
         }
         else if (email == '') {
             alertaHtml("Favor de llenar el correo", "error");
