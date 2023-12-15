@@ -113,7 +113,6 @@ function loadStorageSampleData() {
     }
 }
 
-
 function loadCardsListFromItemsController() {
     const obj = JSON.parse(localStorage.getItem('products'))
     console.log(obj);
@@ -167,11 +166,10 @@ function openModal(product) {
 
 }
 
-
 // Funciones para controlar la paginación
 let thisPage = 1;
 let limit = 8; // Limita a 8 resultados por página
-const loadItem = () => {
+function loadItem () {
     // Obtiene todos los cards existentes 
     let list = document.querySelectorAll('.card-product');
     let beginGet = limit * (thisPage - 1);
@@ -187,8 +185,7 @@ const loadItem = () => {
     listPage();
 }
 
-
-const listPage = () => {
+function listPage  {
     let list = document.querySelectorAll('.card-product');
     let count = Math.ceil(list.length / limit);
     document.querySelector('.list-page').innerHTML = '';
