@@ -63,11 +63,14 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (password == '') {
             alertaHtml("Favor de llenar la contraseña", "error");
             respuesta = false;
+        } else if (password.length < 6) {
+            alertaHtml("La contraseña no debe ser menor a 6 carácteres", "error");
+            respuesta = false;
         }
         else if (confirmPassword === '') {
             alertaHtml("Favor de confirmar la contraseña", "error");
             respuesta = false;
-        }
+        } 
         else if (password !== confirmPassword) {
             alertaHtml("La contraseña no coincide", "error");
             respuesta = false;
