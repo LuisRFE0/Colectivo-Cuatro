@@ -290,7 +290,7 @@
 
     /* Agrega aquí tus estilos para teléfonos móviles */
     .carousel-inner, .carousel-inner img, .carousel-item {
-        height: 50vh;
+        height: 40vh;
     }
 
     .index-text-welcome2 {
