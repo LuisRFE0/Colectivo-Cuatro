@@ -44,9 +44,17 @@
 
 
 
+.dropdown-menu {
+        margin-top: 1rem!important;
+        background-color: var(--azul);
+        padding: 0.5rem;
+        border-radius: 1rem;
+}
 
 
-
+.dropdown-menu li:hover {
+    background-color: var(--rosa);
+}
 
 
 

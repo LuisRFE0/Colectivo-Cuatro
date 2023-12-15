@@ -1,7 +1,7 @@
 // const enlace = document.querySelector('#enlaceInicioSesion');
 // const divenenlace = document.querySelector('.enlaceInicioSesions');
 const enlace2 = document.querySelector('#item-1');
-
+const enlace3 = document.querySelector('#item-2')
 const divenenlace2 = document.querySelector('#item-3');
 
 
@@ -25,9 +25,10 @@ function elementoSesion() {
 function ajustarNav(sesion) {
     if (sesion) {
 
-        enlace2.textContent = 'Cuenta';
+        enlace2.innerHTML = 'Cuenta';
 
         enlace2.setAttribute('data-bs-toggle', "dropdown");
+
         const btnSesionIniciada = document.createElement('button');
         btnSesionIniciada.classList.add('nav-link', 'color-texto',);
         btnSesionIniciada.style.width = '100%'
@@ -36,7 +37,17 @@ function ajustarNav(sesion) {
         divenenlace2.appendChild(btnSesionIniciada);
         btnSesionIniciada.addEventListener('click', () => {
             localStorage.removeItem('sesion');
-            location.reload();
+            location.href = "../../../index.html"
+        });
+
+        const btnProfile = document.createElement('button');
+        btnProfile.classList.add('nav-link', 'color-texto',);
+        btnProfile.style.width = '100%'
+        btnProfile.style.textAlign = 'left'
+        btnProfile.textContent = 'Perfil';
+        enlace3.appendChild(btnProfile);
+        btnProfile.addEventListener('click', () => {
+            location.href = "../../../assets/pages/profile/perfil.html"
         });
 
 

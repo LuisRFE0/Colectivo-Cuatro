@@ -54,6 +54,7 @@
 }
 
 .btns-login {
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -67,20 +68,16 @@
     font-weight: 700;
 }
 
-.btns-login p {
-    margin-top: 12px;
-}
-
+ 
 #alerta {
     margin: 0 auto;
-    max-width: 300px;
-    height: 60px;
+    height: auto;
 }
 
 #alerta p {
-    max-width: 300px;
-    border-radius: 20px;
-    padding: 10px;
+    text-align: center;
+    padding: 0.25rem 3rem;
+    border-radius: 0.5rem;
 }
 
 
