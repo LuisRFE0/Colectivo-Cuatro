@@ -1,6 +1,6 @@
 .container-login {
     margin: 0 auto;
-    height: 100vh;
+    height: 900px;
     position: relative;
 
 }
@@ -70,6 +70,17 @@
     margin-top: 16px;
 }
 
+.alerta {
+    height: 20px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.alerta p {
+    border-radius: 20px;
+    padding: 8px;
+}
+
 @media only screen and (max-width: 1024px) {
     .triangulo {
         height: 500px;
@@ -99,6 +110,7 @@
         margin-left: .5rem;
         width: 110px;
     }
+
 
 
 }
@@ -167,6 +179,17 @@
     .form-container img {
         margin-left: .5rem;
         width: 110px;
+    }
+
+    .alerta {
+        height: 15px;
+        width: 250px;
+        margin: 0 auto;
+    }
+
+    .alerta p {
+        border-radius: 20px;
+        padding: 8px;
     }
 
 }

@@ -9,22 +9,15 @@ class SignupController {
     //Guardar persona en localstorage
     addPerson(datos) {
         if (this.verificarExistente(datos)) {
-            alertaHtml('La persona ya ha sido registrada', 'error');
-            return;
+            return false;
         } else {
             this.datosPersona = [...this.datosPersona, datos[0]];
             localStorage.setItem('usuario', JSON.stringify(this.datosPersona));
-            alertaHtml('Cuenta registrada exitosamente');
-            location.href = '../../../assets/pages/login.html';
+            return true;
+
         }
 
     }
-
-
-
-
-
-
 
 
     verificarExistente(datos) {

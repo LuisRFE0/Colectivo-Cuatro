@@ -15,7 +15,7 @@
 }
 
 .navegacion {
-    background-color: var(--azul)!important;
+    background-color: var(--azul) !important;
     color: white;
 
 }
@@ -37,6 +37,16 @@
     padding: 8px;
     font-weight: 700;
 }
+
+
+#item1 {
+    color: var(--rosa) !important;
+}
+
+
+
+
+
 
 
 .color-texto {

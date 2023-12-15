@@ -49,9 +49,16 @@
                             <a class="nav-link color-texto" href="../pages/nosotros.html">Conócenos</a>
 
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link color-texto active" href="../pages/login.html">Iniciar sesión</a>
-
+                        <li class="nav-item dropdown">
+                            <a id="item-1" class="nav-link dropdown-toggle" href="../../assets/pages/login.html"
+                                role="button" aria-expanded="false">
+                                Iniciar sesión
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li id="item-2"><a class="dropdown-item"
+                                        href="../../assets/pages/profile/perfil.html">Perfil</a></li>
+                                <li id="item-3"></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link color-texto" href="../pages/cart.html"><i
@@ -87,7 +94,8 @@
                             <div class="mb-3 row">
                                 <label for="staticEmail" class="col-sm-2 col-form-label color-font mx-2">Email</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="staticEmail" value="email@example.com">
+                                    <input type="text" class="form-control" id="inputEmail"
+                                        placeholder="email@example.com">
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -97,8 +105,8 @@
                                     <input type="password" class="form-control" id="inputPassword">
                                 </div>
                             </div>
-
-                            <div class="btns-login mt-5">
+                            <div class="alerta text-center"></div>
+                            <div class=" btns-login mt-5">
                                 <button class="btn-login">Ingresar</button>
 
                                 <a class="mt-4" href="#">Recuperar contraseña</a>
@@ -155,8 +163,8 @@
         crossorigin="anonymous"></script>
     </script>
 
-
-
+    <script src="../js/sesion/login.js"></script>
+    <script src="../js/sesion/sessionIniciada.js"></script>
 
 </body>
 
