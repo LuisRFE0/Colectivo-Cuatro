@@ -50,27 +50,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function validarFormulario({ name, email, password, confirmPassword }) {
         let respuesta;
-        let myText = "palabravalida";
         const regexName =  /^([a-zA-ZñÑáéíóúÁÉÍÓÚ])+$/;
-        if (name == '') {
+        const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        // Minimum eight characters, at least one letter, one number and one special character:
+        const regexPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
+        if (name.trim() == '') {
             alertaHtml("Favor de llenar el nombre", "error");
             respuesta = false;
-        } else if(regexName.test(name)) {
-            alertaHtml("El nombre no puede contener números");
+        } else if(!regexName.test(name.trim())) {
+            alertaHtml("El nombre no puede contener números", "error");
             respuesta = false; 
         }
-        else if (email == '') {
+        else if (email.trim() == '') {
             alertaHtml("Favor de llenar el correo", "error");
             respuesta = false;
+        } else if (!regexEmail.test(email.trim())) {
+            alertaHtml("Valida el formato del correo", "error");
+            respuesta = false;
         }
-        else if (password == '') {
+        else if (password.trim() == '') {
             alertaHtml("Favor de llenar la contraseña", "error");
             respuesta = false;
-        } else if (password.length < 6) {
-            alertaHtml("La contraseña no debe ser menor a 6 carácteres", "error");
+        } else if (password.length < 8) {
+            alertaHtml("La contraseña no debe ser menor a 8 carácteres", "error");
             respuesta = false;
+        } else if (!regexPassword.test(password.trim())) {
+            alertaHtml("La contraseña debe incluir al menos un caracter especial, una letra mayuscula, una minuscula y un número", "Error")
         }
-        else if (confirmPassword === '') {
+        else if (confirmPassword.trim() === '') {
             alertaHtml("Favor de confirmar la contraseña", "error");
             respuesta = false;
         }

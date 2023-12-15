@@ -208,16 +208,23 @@
 
 }
 
+.carousel-inner, .carousel-item {
+    height: 95vh;
+}
+
+.carousel-inner h5 {
+    margin-bottom: 2rem;
+}
+
 .carousel-local {
     width: 100%;
 
 }
 
 .carousel-local img {
-
-    height: 700px;
+    filter: brightness(95%);
+    opacity: 90%;
 }
-
 .index-texto-welcome {
     margin: 3rem 1rem;
     text-align: center;
@@ -265,8 +272,8 @@
         width: 20px;
     }
 
-    .carousel-local img {
-        height: 500px;
+    .carousel-inner, .carousel-inner img, .carousel-item{
+        height: 70vh;
     }
 
     .img-foot {
@@ -282,8 +289,8 @@
 @media only screen and (max-width: 480px) {
 
     /* Agrega aquí tus estilos para teléfonos móviles */
-    .carousel-local img {
-        height: 300px;
+    .carousel-inner, .carousel-inner img, .carousel-item {
+        height: 50vh;
     }
 
     .index-text-welcome2 {

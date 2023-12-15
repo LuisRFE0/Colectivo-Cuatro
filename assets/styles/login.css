@@ -71,7 +71,7 @@
 }
 
 .alerta {
-    height: 20px;
+    height: auto;
     width: 300px;
     margin: 0 auto;
 }
