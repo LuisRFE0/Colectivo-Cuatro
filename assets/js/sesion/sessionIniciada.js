@@ -54,7 +54,7 @@ function ajustarNav(sesion) {
     } else {
         enlace2.classList.remove('dropdown-toggle');
         enlace2.textContent = "Iniciar Sesion";
-        enlace2.setAttribute('href', "../pages/login.html");
+        enlace2.setAttribute('href', "./pages/login.html");
     }
 }
 
