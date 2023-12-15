@@ -21,7 +21,7 @@ function iniciarSesion(e) {
             localStorage.setItem('sesion', JSON.stringify(sesion));
 
 
-            location.href = '../../../index.html'
+            location.href = '../../index.html'
         } else {
             alertaHtml('Email o contraseña incorrectos', 'error');
         }

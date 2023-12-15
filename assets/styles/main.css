@@ -14,6 +14,10 @@
     font-weight: 400;
 }
 
+.dropdown-menu {
+    color: var(--rosa) !important;
+}
+
 .navegacion {
     background-color: var(--azul) !important;
     color: white;
@@ -39,9 +43,6 @@
 }
 
 
-#item1 {
-    color: var(--rosa) !important;
-}
 
 .dropdown-menu {
         margin-top: 1rem!important;

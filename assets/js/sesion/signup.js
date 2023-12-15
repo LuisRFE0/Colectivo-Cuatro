@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alertaHtml('La cuenta ya ha sido registrada', 'error');
         } else {
             alertaHtml('Cuenta registrada exitosamente');
-            location.href = '../../../assets/pages/login.html';
+            location.href = '../../assets/pages/login.html';
         }
     }
 
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (confirmPassword === '') {
             alertaHtml("Favor de confirmar la contraseña", "error");
             respuesta = false;
-        } 
+        }
         else if (password !== confirmPassword) {
             alertaHtml("La contraseña no coincide", "error");
             respuesta = false;
