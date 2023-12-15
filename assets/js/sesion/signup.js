@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alertaHtml('La cuenta ya ha sido registrada', 'error');
         } else {
             alertaHtml('Cuenta registrada exitosamente');
-            location.href = '../../pages/login.html';
+            location.href = '../../assets/pages/login.html';
         }
     }
 
