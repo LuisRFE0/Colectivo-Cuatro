@@ -185,7 +185,7 @@ function loadItem () {
     listPage();
 }
 
-function listPage  {
+function listPage ()  {
     let list = document.querySelectorAll('.card-product');
     let count = Math.ceil(list.length / limit);
     document.querySelector('.list-page').innerHTML = '';
