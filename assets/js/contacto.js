@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const formulario = document.querySelector('#form');
     const alerta = document.querySelector('#alerta');
-    const btnContacto = document.querySelector('#btn-contacto');
+    const btnContacto = document.querySelector('.btn-contacto');
     //---------------------------eventListeners-------------------------
     formulario.addEventListener('submit', enviarCorreo);
 
@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         } else {
             btnContacto.disabled = true;
+            btnContacto.style.background = "#525252";
             enviarCorreoServidor(datosFormulario)
         }
     }
@@ -63,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //hola
 
     /**
-     * Alrta que se imprime en el html de contacto cuando falta algun campo
+     * Alerta que se imprime en el html de contacto cuando falta algun campo
      * @param {mensaje de erro} mensaje 
      */
     function alertaHtml(mensaje, estado) {
@@ -114,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alertaHtml("Mensaje enviado!", "correcto");
                 document.getElementById("form").reset();
                 btnContacto.disabled = false;
+                btnContacto.style.background = "#0A3C82";
 
             })
             .catch(error => console.log(error));

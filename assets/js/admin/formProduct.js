@@ -28,7 +28,7 @@ function addProduct({ name, description, image, stock, price }) {
     if (!verificarExistenciaProducto(name)) {
         productsController.addItem(name, description, image, stock, price);
     } else {
-        imprimmirAlertaHtml('Este producto ya existe',  'error');
+        imprimmirAlertaHtml('Este producto ya existe', 'error');
         limpiarCampos();
     }
 }
@@ -93,7 +93,7 @@ function validarform(e) {
 }
 
 
-function validarCampos({ name, description, image, stock }) {
+function validarCampos({ name, description, image, stock, price }) {
 
     let validacion;
     if (name === '') {
@@ -108,6 +108,8 @@ function validarCampos({ name, description, image, stock }) {
     } else if (stock === '') {
         imprimmirAlertaHtml('Favor de llenar la cantidad', 'error');
         validacion = false;
+    } else if (price === '') {
+        imprimmirAlertaHtml('Favor de llenar el precio', 'error');
     } else {
 
         validacion = true;

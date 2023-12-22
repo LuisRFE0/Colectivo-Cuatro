@@ -11,7 +11,7 @@ function addItemCard(product) {
     <div class="card-product" id="${product.id}">
      <img src="${product.images}" onerror="this.onerror=null; this.src='../images/products-images/img-product-404.jpg'" class="card-img-top" alt="...">
      <div class="card-product-body">
-         <h5 class="card-product-title">${product.name}</h5>
+         <div class="card-product-div"><h5 class="card-product-title">${product.name}</h5></div>
          <p class="card-product-description">${product.descriptions}</p>
          <span class="card-product-price"><small class="card-sign">$ </small>${product.price}.°°<small class="card-currency"> mxn</small></span>
          <i class="fa-solid fa-cart-plus fa-xl card-add-cart"></i>

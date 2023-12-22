@@ -14,8 +14,12 @@
     font-weight: 400;
 }
 
+.dropdown-menu {
+    color: var(--rosa) !important;
+}
+
 .navegacion {
-    background-color: var(--azul)!important;
+    background-color: var(--azul) !important;
     color: white;
 
 }
@@ -37,6 +41,21 @@
     padding: 8px;
     font-weight: 700;
 }
+
+
+
+.dropdown-menu {
+        margin-top: 1rem!important;
+        background-color: var(--azul);
+        padding: 0.5rem;
+        border-radius: 1rem;
+}
+
+
+.dropdown-menu li:hover {
+    background-color: var(--rosa);
+}
+
 
 
 .color-texto {
@@ -189,16 +208,23 @@
 
 }
 
+.carousel-inner, .carousel-item {
+    height: 95vh;
+}
+
+.carousel-inner h5 {
+    margin-bottom: 2rem;
+}
+
 .carousel-local {
     width: 100%;
 
 }
 
 .carousel-local img {
-
-    height: 700px;
+    filter: brightness(95%);
+    opacity: 90%;
 }
-
 .index-texto-welcome {
     margin: 3rem 1rem;
     text-align: center;
@@ -246,8 +272,8 @@
         width: 20px;
     }
 
-    .carousel-local img {
-        height: 500px;
+    .carousel-inner, .carousel-inner img, .carousel-item{
+        height: 70vh;
     }
 
     .img-foot {
@@ -263,8 +289,8 @@
 @media only screen and (max-width: 480px) {
 
     /* Agrega aquí tus estilos para teléfonos móviles */
-    .carousel-local img {
-        height: 300px;
+    .carousel-inner, .carousel-inner img, .carousel-item {
+        height: 40vh;
     }
 
     .index-text-welcome2 {
