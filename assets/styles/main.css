@@ -262,6 +262,19 @@
     box-shadow: 2px 2px 5px 0px var(--amarillo);
 }
 
+.fa-cart-shopping::after {
+    content:attr(value);
+    font-size: 9px;
+    color: var(--azul);
+    background: var(--amarillo);
+    border-radius: 500%;
+    padding: 2px 4px;
+    position:relative;
+    left:-10px;
+    top:-12px;
+    opacity:0.9;
+}
+
 /* Estilos para dispositivos de escritorio */
 
 /* Estilos para tabletas */

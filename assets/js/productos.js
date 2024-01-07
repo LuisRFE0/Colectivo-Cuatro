@@ -14,7 +14,7 @@ function addItemCard(product) {
          <div class="card-product-div"><h5 class="card-product-title">${product.name}</h5></div>
          <p class="card-product-description">${product.descriptions}</p>
          <span class="card-product-price"><small class="card-sign">$ </small>${product.price}.°°<small class="card-currency"> mxn</small></span>
-         <i class="fa-solid fa-cart-plus fa-xl card-add-cart"></i>
+         <i id=id${product.id} class="fa-solid fa-cart-plus fa-xl card-add-cart"></i>
      </div>
     </div>
 
@@ -134,13 +134,17 @@ function loadCardsListFromItemsController() {
 }
 
 function addClickEvent() {
+
     productsController.productsList.map(product => {
         const parent = document.getElementById(`${product.id}`);
-        parent.addEventListener('click', handleClick, false);
+        parent.addEventListener('click', handleClickDiv, false);
+
+        const btnCart = document.getElementById(`id${product.id}`);
+        btnCart.addEventListener('click', handleClickCart, false);
     });
 
 
-    function handleClick(e) {
+    function handleClickDiv(e) {
         let { id, tagName, parentNode } = e.target;
         id = tagName === 'DIV' ? id : parentNode.id;
 
@@ -151,6 +155,59 @@ function addClickEvent() {
         }
 
     }
+
+    function handleClickCart(e) {
+        let { id, tagName, parentNode } = e.target;
+
+        addProduct(id.substring(2));
+    }
+
+}
+
+
+function addProduct(id) {
+    let cart = [];
+
+    const cartBadge = document.getElementById('cart-nav');
+    const product = productsController.productsList.filter(product => product['id'] == id)[0];
+       
+       if(localStorage.getItem('cart')){
+           cart  = JSON.parse(localStorage.getItem('cart'))
+       }
+   
+       cart.push(product); 
+
+/* 
+
+    if (localStorage.getItem('cart')) {
+        cart = JSON.parse(localStorage.getItem('cart'))
+    }
+
+     for (let i = 0; i < cart.length; i++) {
+            if (cart[i].productID === id) {
+                    cart[i].quantity += 1;
+                }
+             else {
+                cart.push({ productID: id, quantity: 1 });
+            }
+        }
+
+ */
+    cartBadge.setAttribute('value', cart.length);
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+}
+
+function cartProductExists(cart, id) {
+    let response = false;
+    for (const [key, value] of Object.entries(cart)) {
+        if (value.productID == id) {
+            response = true;
+        } else {
+            response = false;
+        }
+    }
+    return response;
 }
 
 function openModal(product) {
@@ -161,15 +218,16 @@ function openModal(product) {
     productModal.find('.modal-img').attr('onerror', "this.onerror=null; this.src='../images/products-images/img-product-404.jpg'");
     productModal.find('.modal-sign').text('$ ');
     productModal.find('.modal-price').text(`${product.price}.°°`);
+    productModal.find('.modal-span-cart').html(`<i class='fa-solid fa-cart-plus fa-xl modal-add-cart' onclick='addProduct(${product.id})'></i>`);
     productModal.find('.modal-currency').text('mxn');
     productModal.modal('show');
 
-}
 
+}
 // Funciones para controlar la paginación
 let thisPage = 1;
 let limit = 8; // Limita a 8 resultados por página
-function loadItem () {
+function loadItem() {
     // Obtiene todos los cards existentes 
     let list = document.querySelectorAll('.card-product');
     let beginGet = limit * (thisPage - 1);
@@ -185,7 +243,7 @@ function loadItem () {
     listPage();
 }
 
-function listPage ()  {
+function listPage() {
     let list = document.querySelectorAll('.card-product');
     let count = Math.ceil(list.length / limit);
     document.querySelector('.list-page').innerHTML = '';
@@ -224,6 +282,8 @@ const changePage = i => {
     document.documentElement.scrollTop = 80;
 }
 
-loadStorageSampleData();
-productsController.loadItemsFromLocalStorage();
-loadCardsListFromItemsController();
+(function () {
+    loadStorageSampleData();
+    productsController.loadItemsFromLocalStorage();
+    loadCardsListFromItemsController();
+})();
