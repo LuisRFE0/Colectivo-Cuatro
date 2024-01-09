@@ -1,0 +1,154 @@
+.container-formulario-envio {
+    margin: 0 auto;
+    height: 900px;
+    position: relative;
+}
+
+.form-control {
+    border: 3px solid var(--azul); 
+    border-radius: 20px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.datos-envio {
+    margin: 3rem 0;
+    font-size: 35px;
+    font-weight: bold;
+}
+.datos-tarjeta {
+    margin: 3rem 0;
+    font-size: 25px; 
+    font-weight: bold;
+}
+.form-container {
+    position: absolute;
+    margin: 7rem 0 0 5rem;
+    width: 40px;
+}
+
+.btn-pagar {
+    width: 200px;
+    border: none;
+    background-color: var(--azul);
+    padding: 5px 32px;
+    border-radius: 24px;
+    font-weight: 700;
+    color: white;
+}
+
+.btns-pagar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.btns-pagar a {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+}
+
+.btns-pagar p {
+    margin-top: 16px;
+}
+
+.alerta {
+    height: auto;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.alerta p {
+    border-radius: 20px;
+    padding: 8px;
+}
+
+@media only screen and (max-width: 1024px) {
+    
+    .datos-envio {
+        margin: 2rem 0;
+        font-size: 24px;
+    }
+    
+    .datos-tarjeta {
+        margin: 2rem 0;
+        font-size: 18px;
+    }
+    .container-formulario-envio {
+        margin: 0 auto;
+        height: 700px;
+        position: relative;
+    }
+
+    .form-container {
+        position: absolute;
+        margin: 8rem 0 0 6rem;
+        width: 45%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .datos-envio {
+        margin: 2rem 0;
+        font-size: 20px;
+    }
+
+    .datos-tarjeta {
+        margin: 2rem 0;
+        font-size: 18px;
+    }
+
+    .container-formulario-envio {
+        margin: 0 auto;
+        height: 700px;
+        position: relative;
+    }
+
+    .form-container {
+        position: absolute;
+        margin: 8rem 0 0 4rem;
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .datos-envio {
+        margin: 2rem 0;
+        font-size: 20px;
+    }
+
+    .datos-tarjeta {
+        margin: 2rem 0;
+        font-size: 18px;
+    }
+
+    .container-formulario-envio {
+        margin: 0 auto;
+        height: 700px;
+        position: relative;
+    }
+
+    .form-container {
+        position: absolute;
+        margin: 8rem 0 0 4rem;
+        width: 70%;
+    }
+
+    .alerta {
+        height: 15px;
+        width: 250px;
+        margin: 0 auto;
+    }
+
+    .alerta p {
+        border-radius: 20px;
+        padding: 8px;
+    }
+}
