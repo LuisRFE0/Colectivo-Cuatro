@@ -34,7 +34,7 @@ function orderDetails() {
     const orderHTML = `   <div class="row bill">
         <div class="col-6 order-titles">Envio: <br> Subtotal: <br> Descuento:  <br> <span class="order-total"  >Total</span> </div>
         <div class="col-6 order-numbers text-end">$100.00 <br> $1500.00 <br> $0.00 <br> <span class="order-total" id="order-total">$${total}</span></div>
-        <div class="col-12 text-center"><button id="order-checkout">Confirmar</button></div>
+        <div class="col-12 text-center"><a href="../../assets/pages/profile/formularioenvio.html" id="order-checkout">Confirmar</a></div>
     </div>`;
 
     orderDetailsContainer.innerHTML += orderHTML;
