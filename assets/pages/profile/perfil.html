@@ -62,17 +62,81 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link color-texto" href="../../pages/cart.html"><i
-                                    class="fa-solid fa-cart-shopping"></i></a>
+                            <a class="nav-link color-texto " href="../../pages/cart.html"><i
+                                    class="fa-solid fa-cart-shopping" id="cart-nav"></i></a>
 
                         </li>
+
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
     <main>
+        <div class="container">
+            <img id="imagenMostrada" src="../../images/formulario-perfil.png"
+                class="imagen-formulario-perfil round-image" alt="Imagen formulario perfil">
+        </div>
 
+        <div class="select-image-container">
+            <!--<input type="file" id="imagenInput" accept="image/*">
+            <button onclick="cargarImagen()">Cargar Imagen</button>-->
+            <!--<label>
+                <input type="file" id="imagenInput" style="display:none;"/>
+                <img src="../../images/add-image.png" onclick="cargarImagen()"/>
+             </label>-->
+
+            <label>
+                <input type="file" style="display:none;" onchange="onFileSelected(event)">
+                <img src="../../images/add-image.png" width="30px" height="30px">
+            </label>
+        </div>
+
+        <section class="row text-center mt-5">
+            <div class="col-lg-12 mb-3">
+                <h5 class="color-font" id="contact-header">MI INFORMACIÓN</h5>
+            </div>
+
+            <div>
+                <div>
+                    <div class="col-lg-6 col-sm-12 " id="form-container" style="margin: 0 auto;">
+                        <form id="form" class="row g-3 mr-3 d-flex justify-content-center align-items-center">
+                            <div class="col-md-8 col-sm-12 mx-auto">
+                                <label for="inputEmail4" class="form-label justify-content-start d-flex ">
+                                    Nombre:</label>
+                                <input type="text" class="form-control" id="inputNombre4">
+                            </div>
+                            <div class="col-md-8">
+                                <label for="inputEmail4"
+                                    class="form-label justify-content-start d-flex">Teléfono:</label>
+                                <input type="text" class="form-control" id="inputTelefono4">
+                            </div>
+                            <div class="col-md-8">
+                                <label for="inputEmail4" class="form-label justify-content-start d-flex">Correo
+                                    electrónico:</label>
+                                <input type="email" class="form-control" id="inputEmail4">
+                            </div>
+                            <div class="col-md-8">
+                                <label for="inputEmail4"
+                                    class="form-label justify-content-start d-flex">Dirección:</label>
+                                <textarea class="form-control" id="inpuntTextArea4" cols="25" rows="1"></textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <button type="submit" class="btn-guardar">Guardar</button>
+                            </div>
+                            <div id="alerta" class="col-md-8"></div>
+                            <br><br><br>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+        <a href="./formulario-perfil.html">form</a>
     </main>
     <footer class="linea-footer">
         <!-- place footer here -->
@@ -111,6 +175,7 @@
     <script src="https://kit.fontawesome.com/6c43844585.js" crossorigin="anonymous"></script>
     <script src="../../js/main.js"></script>
     <script src="../../js/sesion/sessionIniciada.js"></script>
+    <script src="../../js/main.js"></script>
 
 
 </body>
