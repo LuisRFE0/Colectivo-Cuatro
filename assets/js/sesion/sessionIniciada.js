@@ -37,7 +37,7 @@ function ajustarNav(sesion) {
         divenenlace2.appendChild(btnSesionIniciada);
         btnSesionIniciada.addEventListener('click', () => {
             localStorage.removeItem('sesion');
-            location.href = "/index.html"
+            location.href = "/Colectivo-Cuatro/index.html"
         });
 
         const btnProfile = document.createElement('button');
@@ -47,7 +47,7 @@ function ajustarNav(sesion) {
         btnProfile.textContent = 'Perfil';
         enlace3.appendChild(btnProfile);
         btnProfile.addEventListener('click', () => {
-            location.href = "/assets/pages/profile/perfil.html"
+            location.href = "/Colectivo-Cuatro/assets/pages/profile/perfil.html"
         });
 
 
