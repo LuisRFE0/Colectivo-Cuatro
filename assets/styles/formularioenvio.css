@@ -5,8 +5,8 @@
 }
 
 .form-control {
-    border: 3px solid var(--azul); 
-    border-radius: 20px;
+    border: 1.5px solid var(--azul);
+    border-radius: 12px;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -20,11 +20,13 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: 35px;
     font-weight: bold;
 }
+
 .datos-tarjeta {
     margin: 3rem 0;
-    font-size: 25px; 
+    font-size: 25px;
     font-weight: bold;
 }
+
 .form-container {
     position: absolute;
     margin: 7rem 0 0 5rem;
@@ -46,7 +48,7 @@ input[type="number"]::-webkit-outer-spin-button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .btns-pagar a {
@@ -71,16 +73,17 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 @media only screen and (max-width: 1024px) {
-    
+
     .datos-envio {
         margin: 2rem 0;
         font-size: 24px;
     }
-    
+
     .datos-tarjeta {
         margin: 2rem 0;
         font-size: 18px;
     }
+
     .container-formulario-envio {
         margin: 0 auto;
         height: 700px;

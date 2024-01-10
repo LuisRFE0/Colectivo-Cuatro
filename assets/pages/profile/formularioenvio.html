@@ -75,89 +75,95 @@
         <section>
 
 
-            <div class="container-formulario-envio">
+            <div style="width: 100%; display: flex;flex-direction: column; justify-content: center; align-items: center;"
+                class="container-formulario-envio">
 
-                <div>
-                    <h3 class="datos-envio color-font color-font-700 text-center">Datos de envío</h3>
+                <h3 class="datos-envio color-font color-font-700 text-center">Datos de envío</h3>
+                <form action="#" id="form">
+
+
+                    <div style="" class="mb-3 row">
+                        <label for=" input-nombre" class="col col-form-label color-font  ">Nombre
+                            del
+                            responsable:</label>
+
+                        <input style="width: 20rem;" type="text" class="form-control " id="input-nombre"
+                            placeholder="Maria antonieta de las nieves">
+
+                    </div>
+
+
+
+                    <div class="mb-3 row">
+                        <label for="input-direccion" class="col col-form-label color-font ">Calle y
+                            numero:</label>
+
+                        <input style="width: 20rem;" type="number" class="form-control" id="input-direccion"
+                            placeholder="25 #456">
+
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="input-codigo-postal" class="col col-form-label color-font ">Codigo
+                            postal:</label>
+
+                        <input style="width: 20rem;" type="number" class="form-control" id="input-codigo-postal"
+                            placeholder="97000">
+
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="input-colonia" class="col col-form-label color-font ">Colonia:</label>
+
+                        <input style="width: 20rem;" type="text" class="form-control" id="input-colonia"
+                            placeholder="Ingrese su Colonia">
+
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="input-ciudad" class="col col-form-label color-font  "> Ciudad:
+                        </label>
+
+                        <input style="width: 20rem;" type="text" class="form-control" id="input-ciudad"
+                            placeholder="Jalisco">
+
+                    </div>
+                    <!--------------------------------------------------------------------------->
+                    <h5 class="datos-tarjeta color-font color-font-700 text-center">Datos de tarjeta</h5>
                     <form action="#" id="form">
 
-
                         <div class="mb-3 row">
-                            <label for="input-nombre" class="col-sm-3 col-form-label color-font mx-2 ">Nombre del
-                                responsable:</label>
-                            <div class="col-md-3 mx-auto">
-                                <input type="text" class="form-control" id="input-nombre"
-                                    placeholder="Maria antonieta de las nieves">
-                            </div>
-                        </div>
+                            <label for="input-nombre" class="col col-form-label color-font  ">Nombre:</label>
 
+                            <input style="width: 20rem;" type="text" class="form-control" id="input-nombre"
+                                placeholder="Maria antonieta de las nieves">
 
-
-                        <div class="mb-3 row">
-                            <label for="input-direccion" class="col-sm-3 col-form-label color-font mx-2">Calle y
-                                numero:</label>
-                            <div class="col-md-3 mx-auto">
-                                <input type="number" class="form-control" id="input-direccion" placeholder="25 #456">
-                            </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="input-codigo-postal" class="col-sm-3 col-form-label color-font mx-2">Codigo
-                                postal:</label>
-                            <div class="col-md-3 mx-auto">
-                                <input type="number" class="form-control" id="input-codigo-postal" placeholder="97000">
-                            </div>
+                            <label for="input-numero-tarjeta" class="col col-form-label color-font  ">Número de
+                                tarjeta</label>
+
+                            <input style="width: 20rem;" type="number" class="form-control" id="input-numero-tarjeta"
+                                placeholder="4444 4444 4444 4444">
+
                         </div>
                         <div class="mb-3 row">
-                            <label for="input-colonia" class="col-sm-3 col-form-label color-font mx-2">Colonia:</label>
-                            <div class="col-md-3 mx-auto">
-                                <input type="text" class="form-control" id="input-colonia"
-                                    placeholder="Ingrese su Colonia">
-                            </div>
+                            <label for="input-ccv" class="col col-form-label color-font  ">CCV:</label>
+
+                            <input style="width: 20rem;" type="number" class="form-control" id="input-ccv"
+                                placeholder="123">
+
                         </div>
-                        <div class="mb-3 row">
-                            <label for="input-ciudad" class="col-sm-3 col-form-label color-font mx-2 "> Ciudad:
-                            </label>
-                            <div class="col-md-3 mx-auto">
-                                <input type="text" class="form-control" id="input-ciudad" placeholder="Jalisco">
+                        <!-------------->
+                        <div class="col-sm-10 btns-pagar ">
+                            <div id="alerta" class="text-center">
+
                             </div>
+                            <br><br>
+                            <button class="btn-pagar" type="submit">Pagar</button>
+
                         </div>
-                        <!--------------------------------------------------------------------------->
-                        <h5 class="datos-tarjeta color-font color-font-700 text-center">Datos de tarjeta</h5>
-                        <form action="#" id="form">
-                            <div class="mb-3 row">
-                                <label for="input-nombre"
-                                    class="col-sm-3 col-form-label color-font mx-2 ">Nombre:</label>
-                                <div class="col-md-3 mx-auto">
-                                    <input type="text" class="form-control" id="input-nombre"
-                                        placeholder="Maria antonieta de las nieves">
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="input-numero-tarjeta"
-                                    class="col-sm-3 col-form-label color-font mx-2 ">Número de tarjeta</label>
-                                <div class="col-md-3 mx-auto">
-                                    <input type="number" class="form-control" id="input-numero-tarjeta"
-                                        placeholder="4444 4444 4444 4444">
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="input-ccv" class="col-sm-3 col-form-label color-font mx-2 ">CCV:</label>
-                                <div class="col-md-3 mx-auto">
-                                    <input type="number" class="form-control" id="input-ccv" placeholder="123">
-                                </div>
-                            </div>
-                            <!-------------->
-                            <div class="col-sm-10 btns-pagar ">
-                                <div id="alerta" class="text-center">
 
-                                </div>
-                                <button class="btn-pagar" type="submit">Pagar</button>
+                    </form>
 
-                            </div>
-
-                        </form>
-
-                </div>
+            </div>
 
             </div>
 
