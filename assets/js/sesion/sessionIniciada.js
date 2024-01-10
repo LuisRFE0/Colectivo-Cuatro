@@ -37,7 +37,7 @@ function ajustarNav(sesion) {
         divenenlace2.appendChild(btnSesionIniciada);
         btnSesionIniciada.addEventListener('click', () => {
             localStorage.removeItem('sesion');
-            window.location.href = './index.html'
+            window.location.href = '/'
         });
 
         const btnProfile = document.createElement('a');
@@ -45,7 +45,7 @@ function ajustarNav(sesion) {
         btnProfile.style.width = '100%'
         btnProfile.style.textAlign = 'left'
         btnProfile.textContent = 'Perfil';
-        btnProfile.href = './assets/pages/profile/perfil.html'
+        btnProfile.href = '../../../assets/pages/profile/perfil.html'
         enlace3.appendChild(btnProfile);
 
         // btnProfile.addEventListener('click', () => {
