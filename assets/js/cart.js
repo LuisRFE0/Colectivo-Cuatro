@@ -52,7 +52,7 @@ function removeProduct(e) {
     document.getElementById('bill-container').innerHTML = ``;
     document.getElementById('product-order-container').innerHTML = ``;
     const cartBadge = document.getElementById('cart-nav');
-    cartBadge.setAttribute('value', cart.length-1);
+    cartBadge.setAttribute('value', cart.length - 1);
     loadCart();
     orderDetails();
 }
