@@ -37,18 +37,20 @@ function ajustarNav(sesion) {
         divenenlace2.appendChild(btnSesionIniciada);
         btnSesionIniciada.addEventListener('click', () => {
             localStorage.removeItem('sesion');
-            location.href = "/Colectivo-Cuatro/index.html"
+            window.location.href = '/'
         });
 
-        const btnProfile = document.createElement('button');
+        const btnProfile = document.createElement('a');
         btnProfile.classList.add('nav-link', 'color-texto',);
         btnProfile.style.width = '100%'
         btnProfile.style.textAlign = 'left'
         btnProfile.textContent = 'Perfil';
+        btnProfile.href = '/assets/pages/profile/perfil.html'
         enlace3.appendChild(btnProfile);
-        btnProfile.addEventListener('click', () => {
-            location.href = "/Colectivo-Cuatro/assets/pages/profile/perfil.html"
-        });
+
+        // btnProfile.addEventListener('click', () => {
+        //     location.href = "/Colectivo-Cuatro/assets/pages/profile/perfil.html"
+        // });
 
 
     } else {
