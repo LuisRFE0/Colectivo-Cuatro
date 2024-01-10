@@ -1,3 +1,10 @@
+#imagen{
+    width: 90%;
+    height: 90%;
+    margin: 2rem 0rem;
+    border-radius: 58px;
+}
+
 .container-formulario-envio {
     margin: 0 auto;
     height: 900px;
