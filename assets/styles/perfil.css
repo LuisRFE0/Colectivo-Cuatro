@@ -1,0 +1,26 @@
+:root {
+
+    --rosa: #FAB4C8;
+    --amarillo: #FAF0A0;
+    --azul: #0A3C82;
+}
+
+.container-perfil label {
+    color: var(--rosa);
+    font-weight: 700;
+}
+
+.container-perfil p {
+    font-weight: 500;
+}
+
+.enlace-perfil {
+    text-decoration: none;
+    border-radius: 58px;
+    border: none;
+    padding: 0.5rem 2rem;
+    width: auto;
+    background-color: var(--amarillo);
+    color: var(--azul);
+    font-weight: 700;
+}

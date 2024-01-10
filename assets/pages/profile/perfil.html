@@ -12,6 +12,8 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="icon" href="./assets/images/icons/favicon.png" />
     <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/formulario-perfil.css">
+    <link rel="stylesheet" href="../../styles/perfil.css">
 
 </head>
 
@@ -79,64 +81,59 @@
         </div>
 
         <div class="select-image-container">
-            <!--<input type="file" id="imagenInput" accept="image/*">
-            <button onclick="cargarImagen()">Cargar Imagen</button>-->
-            <!--<label>
-                <input type="file" id="imagenInput" style="display:none;"/>
-                <img src="../../images/add-image.png" onclick="cargarImagen()"/>
-             </label>-->
+
 
             <label>
-                <input type="file" style="display:none;" onchange="onFileSelected(event)">
-                <img src="../../images/add-image.png" width="30px" height="30px">
+                <input type="file" style="display:none;">
+
             </label>
         </div>
 
         <section class="row text-center mt-5">
-            <div class="col-lg-12 mb-3">
+            <div style="border-bottom:2px solid #0A3C82 ; max-width: 40%; margin: 0 auto;" class="col-lg-12 mb-3 ">
                 <h5 class="color-font" id="contact-header">MI INFORMACIÓN</h5>
             </div>
 
-            <div>
-                <div>
-                    <div class="col-lg-6 col-sm-12 " id="form-container" style="margin: 0 auto;">
-                        <form id="form" class="row g-3 mr-3 d-flex justify-content-center align-items-center">
-                            <div class="col-md-8 col-sm-12 mx-auto">
-                                <label for="inputEmail4" class="form-label justify-content-start d-flex ">
-                                    Nombre:</label>
-                                <input type="text" class="form-control" id="inputNombre4">
-                            </div>
-                            <div class="col-md-8">
-                                <label for="inputEmail4"
-                                    class="form-label justify-content-start d-flex">Teléfono:</label>
-                                <input type="text" class="form-control" id="inputTelefono4">
-                            </div>
-                            <div class="col-md-8">
-                                <label for="inputEmail4" class="form-label justify-content-start d-flex">Correo
-                                    electrónico:</label>
-                                <input type="email" class="form-control" id="inputEmail4">
-                            </div>
-                            <div class="col-md-8">
-                                <label for="inputEmail4"
-                                    class="form-label justify-content-start d-flex">Dirección:</label>
-                                <textarea class="form-control" id="inpuntTextArea4" cols="25" rows="1"></textarea>
-                            </div>
+            <div class="container-perfil">
 
-                            <div class="col-12">
-                                <button type="submit" class="btn-guardar">Guardar</button>
-                            </div>
-                            <div id="alerta" class="col-md-8"></div>
-                            <br><br><br>
-                        </form>
-                    </div>
+                <div class="col-lg-6 col-sm-12 " id="form-container" style="margin: 0 auto;">
+                    <form id="form" style="margin: 0 auto;"
+                        class="row g-3 mr-3 d-flex justify-content-center align-items-center">
+                        <div class="col-md-8 col-sm-12 mx-auto">
+                            <label for="inputEmail4" class="form-label justify-content-start d-flex ">
+                                Nombre:</label>
+                            <p style="text-align: start; margin-left: 1.5rem;">Luis Ricardo flores Estrada</p>
+                        </div>
+                        <div class="col-md-8">
+                            <label for="inputEmail4" class="form-label justify-content-start d-flex">Teléfono:</label>
+                            <p style="text-align: start;  margin-left: 1.5rem;">5524476013</p>
+                        </div>
+                        <div class="col-md-8">
+                            <label for="inputEmail4" class="form-label justify-content-start d-flex">Correo
+                                electrónico:</label>
+                            <p style="text-align: start;  margin-left: 1.5rem;">luis.r.flores.e@hotmail.com</p>
+                        </div>
+                        <div class="col-md-8">
+                            <label for="inputEmail4" class="form-label justify-content-start d-flex">Dirección:</label>
+                            <p style="text-align: start;  margin-left: 1.5rem;">San juanix 25, col Pa la banda loca
+                            </p>
+                        </div>
 
+                        <div class="col-12 mt-5">
+                            <a href="./formulario-perfil.html" class="enlace-perfil">Actializar</a>
+                        </div>
+                        <div id="alerta" class="col-md-8"></div>
+                        <br><br><br>
+                    </form>
                 </div>
+
+            </div>
 
             </div>
 
 
         </section>
-        <a href="./formulario-perfil.html">form</a>
+
     </main>
     <footer class="linea-footer">
         <!-- place footer here -->
