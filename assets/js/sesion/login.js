@@ -10,25 +10,57 @@ function iniciarSesion(e) {
     const datosObj = {
         email: inputEmail.value,
         password: inputPassword.value
-    }
-    if (validarDatos(datosObj)) {
-        if (obtenerPersona(datosObj)) {
+    };
 
-            const sesion = {
-                sesion: true,
-                email: datosObj.email
+    const url = 'http://localhost:8080/api/v1/users/login';
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datosObj)
+    };
+
+    fetch(url, requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            if (data.message.email) {
+                alertaHtml("Iniciando Sesion");
+                generarSesion(data.message.email);
             }
-            localStorage.setItem('sesion', JSON.stringify(sesion));
+        })
+        .catch(error => {
+            alertaHtml("Correo y/o contraseña incorrectos", "error");
+        });
 
 
-            location.href = '../../index.html'
-        } else {
-            alertaHtml('Email o contraseña incorrectos', 'error');
-        }
-    }
+
+
+    // if (validarDatos(datosObj)) {
+    //     if (obtenerPersona(datosObj)) {
+
+    //         const sesion = {
+    //             sesion: true,
+    //             email: datosObj.email
+    //         }
+    //         localStorage.setItem('sesion', JSON.stringify(sesion));
+
+
+    //         location.href = '../../index.html'
+    //     } else {
+    //         alertaHtml('Email o contraseña incorrectos', 'error');
+    //     }
+    // }
 }
 
-
+function generarSesion(email) {
+    const sesion = {
+        sesion: true,
+        email: email
+    }
+    localStorage.setItem('sesion', JSON.stringify(sesion));
+    window.location.href = '/';
+}
 
 
 

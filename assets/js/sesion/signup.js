@@ -18,39 +18,82 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-        const datosFormulario = [{
+        const datosFormulario = {
             name: name.value,
+            apellido: "Doe",
             email: email.value,
             password: password.value,
             confirmPassword: confirmPassword.value
-        }]
-
-
-
-        if (validarFormulario(datosFormulario[0])) {
-            registrarUser(datosFormulario);
-        } else {
-            return
         }
+
+
+        if (validarFormulario(datosFormulario)) {
+
+            const datosFormularioN = {
+                name: name.value,
+                lastName: "Doe",
+                email: email.value,
+                password: password.value,
+                id_rol: 1
+            }
+            registrarUser(datosFormularioN);
+        } else {
+            console.log("Error");
+        }
+
+
+
+        // if (validarFormulario(datosFormulario[0])) {
+        //     registrarUser(datosFormulario);
+        // } else {
+        //     return
+        // }
 
 
     }
 
     function registrarUser(datos) {
 
-        if (!signupController.addPerson(datos)) {
-            alertaHtml('La cuenta ya ha sido registrada', 'error');
-        } else {
-            alertaHtml('Cuenta registrada exitosamente');
-            location.href = '../../assets/pages/login.html';
-        }
+        console.log(datos);
+
+        const url = 'http://localhost:8080/api/v1/users/createUser';
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datos)
+        };
+
+        fetch(url, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                if (data) {
+                    alertaHtml("Cuenta Creada correctamente");
+                    window.location.href = '../../assets/pages/login.html';
+                }
+            })
+            .catch(error => {
+                alertaHtml("Error", "error");
+            });
+
+
+        // if (!signupController.addPerson(datos)) {
+        //     alertaHtml('La cuenta ya ha sido registrada', 'error');
+        // } else {
+        //     alertaHtml('Cuenta registrada exitosamente');
+        //     location.href = '../../assets/pages/login.html';
+        // }
+
+
+
     }
 
 
 
     function validarFormulario({ name, email, password, confirmPassword }) {
         let respuesta;
-        const regexName =  /^([a-zA-ZñÑáéíóúÁÉÍÓÚ])+$/;
+        const regexName = /^([a-zA-ZñÑáéíóúÁÉÍÓÚ])+$/;
         const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         // Minimum eight characters, at least one letter, one number and one special character:
         const regexPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
@@ -58,9 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (name.trim() == '') {
             alertaHtml("Favor de llenar el nombre", "error");
             respuesta = false;
-        } else if(!regexName.test(name.trim())) {
+        } else if (!regexName.test(name.trim())) {
             alertaHtml("El nombre no puede contener números", "error");
-            respuesta = false; 
+            respuesta = false;
         }
         else if (email.trim() == '') {
             alertaHtml("Favor de llenar el correo", "error");
