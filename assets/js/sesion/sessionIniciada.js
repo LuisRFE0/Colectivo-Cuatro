@@ -33,7 +33,7 @@ function ajustarNav(sesion) {
         btnSesionIniciada.classList.add('nav-link', 'color-texto',);
         btnSesionIniciada.style.width = '100%'
         btnSesionIniciada.style.textAlign = 'left'
-        btnSesionIniciada.textContent = 'Cerrar Sesion';
+        btnSesionIniciada.textContent = 'Cerrar Sesión';
         divenenlace2.appendChild(btnSesionIniciada);
         btnSesionIniciada.addEventListener('click', () => {
             localStorage.removeItem('sesion');
@@ -55,7 +55,7 @@ function ajustarNav(sesion) {
 
     } else {
         enlace2.classList.remove('dropdown-toggle');
-        enlace2.textContent = "Iniciar Sesion";
+        enlace2.textContent = "Iniciar Sesión";
     }
 }
 

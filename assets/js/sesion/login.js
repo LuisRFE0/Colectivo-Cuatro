@@ -25,8 +25,8 @@ function iniciarSesion(e) {
         .then(response => response.json())
         .then(data => {
             if (data.message.email) {
-                alertaHtml("Iniciando Sesion");
-                generarSesion(data.message.email);
+                alertaHtml("Iniciando Sesión");
+                generarSesion(data.message);
             }
         })
         .catch(error => {
@@ -53,10 +53,11 @@ function iniciarSesion(e) {
     // }
 }
 
-function generarSesion(email) {
+function generarSesion({ id_clientes, email }) {
     const sesion = {
         sesion: true,
-        email: email
+        id_clientes,
+        email
     }
     localStorage.setItem('sesion', JSON.stringify(sesion));
     window.location.href = '/';
