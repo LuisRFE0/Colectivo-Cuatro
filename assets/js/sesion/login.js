@@ -53,12 +53,14 @@ function iniciarSesion(e) {
     // }
 }
 
-function generarSesion({ id_clientes, email }) {
+function generarSesion({ id_clientes, email, id_rol }) {
     const sesion = {
         sesion: true,
         id_clientes,
-        email
+        email,
+        id_rol
     }
+
     localStorage.setItem('sesion', JSON.stringify(sesion));
     window.location.href = '/';
 }

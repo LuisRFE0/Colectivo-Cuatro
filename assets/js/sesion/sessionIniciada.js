@@ -3,6 +3,7 @@
 const enlace2 = document.querySelector('#item-1');
 const enlace3 = document.querySelector('#item-2')
 const divenenlace2 = document.querySelector('#item-3');
+const datosStorage = JSON.parse(localStorage.getItem('sesion')) ? JSON.parse(localStorage.getItem('sesion')) : [];
 
 
 
@@ -13,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function elementoSesion() {
-    const datosStorage = JSON.parse(localStorage.getItem('sesion')) ? JSON.parse(localStorage.getItem('sesion')) : [];
     if (datosStorage.sesion === true) {
         ajustarNav(true);
     } else {
@@ -37,8 +37,8 @@ function ajustarNav(sesion) {
         divenenlace2.appendChild(btnSesionIniciada);
         btnSesionIniciada.addEventListener('click', () => {
             localStorage.removeItem('sesion');
-            // window.location.href = '/Colectivo-Cuatro/index.html'
-            window.location.href = '/'
+            // window.location.href = '/Colectivo-Cuatro/index.html'                //enlace para git hub
+            window.location.href = '/'              //Enlace para local
         });
 
         const btnProfile = document.createElement('a');
@@ -46,9 +46,17 @@ function ajustarNav(sesion) {
         btnProfile.style.width = '100%'
         btnProfile.style.textAlign = 'left'
         btnProfile.textContent = 'Perfil';
-        // btnProfile.href = '/Colectivo-Cuatro/assets/pages/profile/perfil.html'  
-        btnProfile.href = '../../../assets/pages/profile/perfil.html';
-        enlace3.appendChild(btnProfile);
+
+        if (datosStorage.id_rol == 1) {
+            // btnProfile.href = '/Colectivo-Cuatro/assets/pages/profile/perfil.html'           //enlace para git hub
+            btnProfile.href = '../../../assets/pages/profile/perfil.html';           //Enlace para local
+            enlace3.appendChild(btnProfile);
+        } else {
+            // btnProfile.href = '/Colectivo-Cuatro/assets/pages/admin/formulario-producto.html'           //enlace para git hub
+            btnProfile.href = '../../../assets/pages/admin/formulario-producto.html';           //Enlace para local
+            enlace3.appendChild(btnProfile);
+        }
+
 
         // btnProfile.addEventListener('click', () => {
         //     location.href = "/Colectivo-Cuatro/assets/pages/profile/perfil.html"

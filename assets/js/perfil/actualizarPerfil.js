@@ -52,7 +52,8 @@ function actualizarPerfil(event) {
         fetch(url, requestOptions)
             .then(response => response.json())
             .then(data => {
-                alertaHtml('Cuenta acutalizada correctamente')
+                alertaHtml('Cuenta acutalizada correctamente');
+                window.location.href = '../../pages/profile/perfil.html'
             })
             .catch(error => {
                 alertaHtml("Error", "error");
