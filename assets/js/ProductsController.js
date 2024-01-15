@@ -1,3 +1,4 @@
+
 class ProductsController {
 
 
@@ -17,7 +18,7 @@ class ProductsController {
             "category": 1,
             "stock": stock,
             "urlImage": image
-           
+
         };
 
         const requestOptions = {
@@ -27,12 +28,12 @@ class ProductsController {
             },
             body: JSON.stringify(product)
         };
-    
+
 
 
         const response = await fetch(url, requestOptions);;
 
-        if(response.ok) {
+        if (response.ok) {
             limpiarCampos();
             imprimmirAlertaHtml('Elemento agregado correctamente', 'succes');
         } else {
@@ -66,43 +67,47 @@ class ProductsController {
 
     deleteProduct(id) {
         limpiarHtml2();
-        //Obtengo los datos de localStorage
-
-        const nuevoObj = localStorage.getItem("products") ? JSON.parse(localStorage.getItem("products")) : [];
-        const verificarId = nuevoObj.some(elemento => elemento.id === id);
-        const alertaElement = document.createElement('P');
 
 
+        const requestOptions = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        };
 
-        if (verificarId) {
-            const eliminarObj = this.productsList.filter(product => product.id != id);
-            this.productsList = [];
-            localStorage.setItem("products", JSON.stringify(eliminarObj));
-            this.productsList = JSON.parse(localStorage.getItem('products'));
-            alertaElement.classList.add('bg-success', 'text-white');
-            alertaElement.textContent = 'Producto borrado correctamente';
-            limpiarCampos();
+        fetch(this.BASE_URL + `deleteProduct/${id}`, requestOptions)
+            .then(response => {
+                if (response.status == 200) {
+                    imprimmirAlertaHtml('Producto eliminado correctamente')
+                    limpiarCampos();
+                }
+            })
 
+            .catch(error => {
+                alertaHtml(error, "error");
+            });
 
-        } else {
-            alertaElement.classList.add('bg-danger', 'text-white');
-            alertaElement.textContent = 'No existe el producto';
-        }
-        alertaForm.appendChild(alertaElement);
-
-        setTimeout(() => {
-            alertaElement.remove();
-        }, 3000);
 
     }
+
+
+
+
+
+
+
+
+
+
 
     getProduct(ID) {
         if (this.productsList.length > 0) {
 
             if (this.productsList.some(elemento => elemento.id_producto === ID)) {
                 const producto = this.productsList.filter(product => product.id_producto == ID);
-               
-                const {category, description, id_producto, name, price, stock, urlImage } = producto[0];
+
+                const { category, description, id_producto, name, price, stock, urlImage } = producto[0];
                 limpiarCampos();
                 inId.value = id_producto;
                 product.value = name;
@@ -148,13 +153,5 @@ class ProductsController {
 
 }
 
-/*     loadItemsFromLocalStorage() {
-        const storageItems = localStorage.getItem("products")
-        if (storageItems) {
-            const products = JSON.parse(storageItems)
-            for (let i = 0, size = products.length; i < size; i++) {
-                const product = products[i];
-                this.productsList.push(product);
-            }
-        }
-    } */
+
+
