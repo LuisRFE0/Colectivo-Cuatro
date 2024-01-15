@@ -10,7 +10,7 @@ const { id_clientes } = JSON.parse(localStorage.getItem('sesion'))
 function llenarPerfil() {
 
 
-    console.log(id_clientes);
+
     fetch(`http://localhost:8080/api/v1/users/${id_clientes}`)
         .then(request => request.json())
         .then(response => construirPerfil(response))
@@ -39,28 +39,55 @@ function actualizarPerfil(event) {
 
     }
 
+    if (validarDatos(datosObj)) {
+        const url = `http://localhost:8080/api/v1/users/update/${id_clientes}`;
+        const requestOptions = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datosObj)
+        };
+
+        fetch(url, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                alertaHtml('Cuenta acutalizada correctamente')
+            })
+            .catch(error => {
+                alertaHtml("Error", "error");
+            });
+    }
 
 
-    const url = `http://localhost:8080/api/v1/users/update/${id_clientes}`;
-    const requestOptions = {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(datosObj)
-    };
-
-    fetch(url, requestOptions)
-        .then(response => response.json())
-        .then(data => {
-            alertaHtml('Cuenta acutalizada correctamente')
-        })
-        .catch(error => {
-            alertaHtml("Error", "error");
-        });
 
 
 }
+
+
+
+function validarDatos({ name, lastName, email, adress, phone }) {
+    let respuesta = true;
+    if (name.trim() == '') {
+        alertaHtml("Favor de llenar el nombre", "error");
+        respuesta = false;
+    } else if (lastName.trim() == '') {
+        alertaHtml("Favor de llenar el apellido", "error");
+        respuesta = false;
+    } else if (email.trim() == '') {
+        alertaHtml("Favor de llenar el correo", "error");
+        respuesta = false;
+    } else if (adress.trim() == '') {
+        alertaHtml("Favor de llenar la direccion", "error");
+        respuesta = false;
+    } else if (phone.trim() == '') {
+        alertaHtml("Favor de llenar el teléfono", "error");
+        respuesta = false;
+    }
+    return respuesta;
+
+}
+
 
 const alerta = document.querySelector('#alerta')
 function alertaHtml(mensaje, estado) {
