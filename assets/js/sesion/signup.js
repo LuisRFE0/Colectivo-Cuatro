@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formulario = document.querySelector('#form');
     const alerta = document.querySelector('#alerta');
     const name = document.querySelector('#input-nombre')
+    const apellido = document.querySelector('#input-apellido')
     const email = document.querySelector('#input-email')
     const password = document.querySelector('#input-password')
     const confirmPassword = document.querySelector('#input-confirm-password')
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const datosFormulario = {
             name: name.value,
-            apellido: "Doe",
+            apellido: apellido.value,
             email: email.value,
             password: password.value,
             confirmPassword: confirmPassword.value
@@ -31,11 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const datosFormularioN = {
                 name: name.value,
-                lastName: "Doe",
+                lastName: apellido.value,
                 email: email.value,
                 password: password.value,
                 id_rol: 1
             }
+
             registrarUser(datosFormularioN);
         } else {
             console.log("Error");
@@ -64,17 +66,24 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify(datos)
         };
-
+        let statusCode;
         fetch(url, requestOptions)
-            .then(response => response.json())
+            .then(response => {
+                statusCode = response.status;
+                return response.json()
+            })
             .then(data => {
-                if (data) {
+                console.log(data);
+                if (statusCode == 200 && data) {
                     alertaHtml("Cuenta Creada correctamente");
                     window.location.href = '../../assets/pages/login.html';
+                } else if (statusCode == 400) {
+                    alertaHtml(data.message, 'error');
                 }
             })
             .catch(error => {
-                alertaHtml("Error", "error");
+                console.log(error.message);
+                // alertaHtml(error, "error");
             });
 
 
@@ -91,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    function validarFormulario({ name, email, password, confirmPassword }) {
+    function validarFormulario({ name, apellido, email, password, confirmPassword }) {
         let respuesta;
         const regexName = /^([a-zA-ZñÑáéíóúÁÉÍÓÚ])+$/;
         const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -103,6 +112,9 @@ document.addEventListener('DOMContentLoaded', () => {
             respuesta = false;
         } else if (!regexName.test(name.trim())) {
             alertaHtml("El nombre no puede contener números", "error");
+            respuesta = false;
+        } else if (apellido.trim() == '') {
+            alertaHtml("Favor de llenar el apellido", "error");
             respuesta = false;
         }
         else if (email.trim() == '') {
