@@ -2,10 +2,10 @@
 const inId = document.querySelector('#input-id');
 const labelId = document.querySelector('.id-hidden');
 const product = document.querySelector('#input-product');
-const description = document.querySelector('#input-description');
+const inputDescription = document.getElementById('input-description');
 const image = document.querySelector('#input-image');
-const stock = document.querySelector('#input-stock');
-const prices = document.querySelector('#input-price');
+const inputStock = document.getElementById('input-stock');
+const inputPrice = document.getElementById('input-price');
 const inputGetProduct = document.querySelector('#btn-gets-product');
 const btnDelete = document.querySelector('#btn-delete-product');
 const form = document.querySelector('#btn-create');
@@ -21,7 +21,7 @@ btnUpdate.addEventListener('click', actualizarProduct);
 
 //***************************Funciones para el producto***************************************************** */
 const productsController = new ProductsController();
-productsController.loadItemsFromLocalStorage();
+productsController.loadItemsFromDatabase();
 
 
 function addProduct({ name, description, image, stock, price }) {
@@ -60,10 +60,10 @@ function verificarExistenciaProducto(producto) {
 
 function limpiarCampos() {
     product.value = '';
-    description.value = ''
+    inputDescription.value = ''
     image.value = ''
-    stock.value = ''
-    prices.value = ''
+    inputStock.value = ''
+    inputPrice.value = ''
     inputBuscar.value = ''
     inId.value = '';
 
@@ -78,10 +78,10 @@ function validarform(e) {
     e.preventDefault();
     const productObj = {
         name: product.value,
-        description: description.value,
+        description: inputDescription.value,
         image: image.value,
-        stock: stock.value,
-        price: prices.value
+        stock: inputStock.value,
+        price: inputPrice.value
     }
     if (validarCampos(productObj)) {
 
@@ -99,13 +99,13 @@ function validarCampos({ name, description, image, stock, price }) {
     if (name === '') {
         imprimmirAlertaHtml('Favor de llenar producto', 'error');
         validacion = false;
-    } else if (description === '') {
+    } else if (inputDescription === '') {
         imprimmirAlertaHtml('Favor de llenar descripción', 'error');
         validacion = false;
     } else if (image === '') {
         imprimmirAlertaHtml('Favor de llenar imagen', 'error');
         validacion = false;
-    } else if (stock === '') {
+    } else if (inputStock === '') {
         imprimmirAlertaHtml('Favor de llenar la cantidad', 'error');
         validacion = false;
     } else if (price === '') {

@@ -26,3 +26,4 @@ function onFileSelected(event) {
   
     reader.readAsDataURL(selectedFile);
   }
+  

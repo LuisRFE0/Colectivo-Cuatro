@@ -4,6 +4,21 @@
     --azul: #0A3C82;
 }
 
+.loading-div {
+    
+    height: 120px;
+    width: 120px;
+    border: 6px solid;
+    border-color: var(--rosa) transparent var(--rosa) transparent;
+    border-radius: 50%;
+    animation: spin 1.3s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+}
 .product-header {
     font-weight: 700;
     color: var(--azul);
@@ -87,8 +102,26 @@
     margin-bottom: 4px;
     color: var(--azul);
     cursor: pointer;
+    
+ 
+    
 }
 
+.card-add-cart {
+    animation-name: grow;
+  }
+  
+  @keyframes grow {
+    from {
+      width: 0px;
+      height: 0px;
+    }
+  
+    to {
+      width: 200px;
+      height: 400px;
+    }
+  }
 .list-page {
     margin-top: 2rem;
     padding: 1rem;
@@ -163,6 +196,9 @@
     cursor: pointer;
 }
 
+.cart-alert {
+    color: var(--rosa);
+}
 
 @media only screen and (max-width: 1400px) {
     .card-product-div {

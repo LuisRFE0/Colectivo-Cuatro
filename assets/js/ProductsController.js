@@ -1,31 +1,42 @@
 class ProductsController {
+
+
+
     constructor() {
         this.productsList = [];
+        this.BASE_URL = "http://localhost:8080/api/v1/products/";
     }
 
-    addItem(name, description, image, stock, price) {
-        const product = {
+    async addItem(name, description, image, stock, price) {
+        const url = this.BASE_URL + "createProduct";
 
-            "id": new Date().getTime(),
+        const product = {
             "name": name,
-            "descriptions": description,
-            "images": image,
-            "stocks": stock,
-            price
+            "price": price,
+            "description": description,
+            "category": 1,
+            "stock": stock,
+            "urlImage": image
+           
         };
 
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        };
+    
 
-        if (localStorage.getItem("products")) {
-            this.productsList.push(product);
-            localStorage.setItem("products", JSON.stringify(this.productsList));
+
+        const response = await fetch(url, requestOptions);;
+
+        if(response.ok) {
             limpiarCampos();
             imprimmirAlertaHtml('Elemento agregado correctamente', 'succes');
-
-
-
         } else {
-            this.productsList.push(product);
-            localStorage.setItem("products", JSON.stringify(this.productsList));
+            imprimmirAlertaHtml('No se agrego', 'error');
         }
 
     }
@@ -52,9 +63,6 @@ class ProductsController {
         btnUpdate.style.display = 'none';
 
     }
-
-
-
 
     deleteProduct(id) {
         limpiarHtml2();
@@ -88,21 +96,21 @@ class ProductsController {
 
     }
 
-
     getProduct(ID) {
-
-
         if (this.productsList.length > 0) {
 
-            if (this.productsList.some(elemento => elemento.id === ID)) {
-                const datos = this.productsList.filter(product => product.id == ID);
-                const { id, name, descriptions, images, stocks } = datos[0];
+            if (this.productsList.some(elemento => elemento.id_producto === ID)) {
+                const producto = this.productsList.filter(product => product.id_producto == ID);
+               
+                const {category, description, id_producto, name, price, stock, urlImage } = producto[0];
                 limpiarCampos();
-                inId.value = id;
+                inId.value = id_producto;
                 product.value = name;
-                description.value = descriptions;
-                image.value = images;
-                stock.value = stocks;
+                inputDescription.value = description;
+                image.value = urlImage;
+                inputStock.value = stock;
+                inputPrice.value = price + "";
+
                 btnUpdate.style.display = 'block';
                 btnDelete.style.display = 'block';
                 labelId.style.display = 'block';
@@ -126,7 +134,21 @@ class ProductsController {
 
     }
 
-    loadItemsFromLocalStorage() {
+    async loadItemsFromDatabase() {
+        const url = this.BASE_URL + "getProducts";
+
+
+        const response = await fetch(url);
+        const products = await response.json();
+
+        products.forEach(product => {
+            this.productsList.push(product);
+        });
+    }
+
+}
+
+/*     loadItemsFromLocalStorage() {
         const storageItems = localStorage.getItem("products")
         if (storageItems) {
             const products = JSON.parse(storageItems)
@@ -135,8 +157,4 @@ class ProductsController {
                 this.productsList.push(product);
             }
         }
-    }
-
-
-
-}
+    } */

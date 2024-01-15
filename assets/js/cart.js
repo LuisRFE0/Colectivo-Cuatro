@@ -10,8 +10,8 @@ function addItemCard(product) {
 
     const productHTML = `
         <div class="row" id="product-container">
-        <div class="col-lg-2 col-md-2 col-6 text-center"><img src="${product.images}" id="product-image"></div>
-        <div class="col-lg-4 col-md-4 col-6" id="product-details"><span id="product-title">${product.name}</span><span class="product-delete" id="${product.id}">Eliminar</span></div>
+        <div class="col-lg-2 col-md-2 col-6 text-center"><img src="${product.urlImage}" id="product-image"></div>
+        <div class="col-lg-4 col-md-4 col-6" id="product-details"><span id="product-title">${product.name}</span><span class="product-delete" id="${product.id_producto}">Eliminar</span></div>
         <div class="col-lg-2 col-md-2 col-4 text-center"><span class="product-order-header">Cada uno</span><br><span id="product-unitary-price">$${product.price}.00</span></div>
         <div class="col-lg-2 col-md-2 col-4 text-center"><span class="product-order-header">Unidades</span><br><input type="number" value="1" id="product-quantity" name="quantity" min="1" max="5"></div>
         <div class="col-lg-2 col-md-2 col-4 text-center"><span class="product-order-header">Total</span><br><span id="product-total-price">$${product.price}.00</span></div>
@@ -33,8 +33,8 @@ function orderDetails() {
 
     const orderHTML = `   <div class="row bill">
         <div class="col-6 order-titles">Envio: <br> Subtotal: <br> Descuento:  <br> <span class="order-total"  >Total</span> </div>
-        <div class="col-6 order-numbers text-end">$100.00 <br> $1500.00 <br> $0.00 <br> <span class="order-total" id="order-total">$${total}</span></div>
-        <div class="col-12 text-center"><a href="../../assets/pages/profile/formularioenvio.html" id="order-checkout">Confirmar</a></div>
+        <div class="col-6 order-numbers text-end">$100.00 <br> $${total} <br> $0.00 <br> <span class="order-total" id="order-total">$${total}</span></div>
+        <div class="col-12 text-center my-3"><a href="../../assets/pages/profile/formularioenvio.html" id="order-checkout">Confirmar</a></div>
     </div>`;
 
     orderDetailsContainer.innerHTML += orderHTML;
@@ -46,7 +46,7 @@ function removeProduct(e) {
     let { id, tagName, parentNode } = e.target;
 
     let cart = JSON.parse(localStorage.getItem('cart'));
-    let products = cart.filter(product => product.id != id);
+    let products = cart.filter(product => product.id_producto != id);
     localStorage.setItem('cart', JSON.stringify(products));
 
     document.getElementById('bill-container').innerHTML = ``;
@@ -65,9 +65,8 @@ function loadCart() {
         addItemCard(item);
     }
 
-    productsController.loadItemsFromLocalStorage();
     cart.map(product => {
-        const parent = document.getElementById(`${product.id}`);
+        const parent = document.getElementById(`${product.id_producto}`);
         parent.addEventListener('click', removeProduct, false);
     });
 
