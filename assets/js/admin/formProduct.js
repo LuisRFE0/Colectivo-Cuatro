@@ -44,11 +44,18 @@ function obtenerProducto() {
 }
 
 function actualizarProduct() {
+    const productObj = {
+        name: product.value,
+        description: inputDescription.value,
+        image: image.value,
+        stock: inputStock.value,
+        price: inputPrice.value
+    }
     const id = parseInt(inId.value);
     if (inId.value == '') {
         imprimmirAlertaHtml('No hay producto para actualizar', 'error')
     } else {
-        productsController.updateProduct(id);
+        productsController.updateProduct(id, productObj);
     }
 }
 

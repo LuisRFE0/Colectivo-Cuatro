@@ -36,6 +36,7 @@ class ProductsController {
         if (response.ok) {
             limpiarCampos();
             imprimmirAlertaHtml('Elemento agregado correctamente', 'succes');
+            this.loadItemsFromDatabase();
         } else {
             imprimmirAlertaHtml('No se agrego', 'error');
         }
@@ -43,31 +44,65 @@ class ProductsController {
     }
 
 
-    updateProduct(id) {
-        const productObj = {
-            id: parseInt(inId.value),
-            name: product.value,
-            descriptions: description.value,
-            images: image.value,
-            stocks: stock.value
-        }
 
 
-        const indiceObjeto = this.productsList.findIndex(objeto => objeto.id === id);
 
-        this.productsList[indiceObjeto] = { ...this.productsList[indiceObjeto], ...productObj };
+    updateProduct(id, { name, price, description, stock, image }) {
+        const product = {
+            "name": name,
+            "price": price,
+            "description": description,
+            "category": 1,
+            "stock": stock,
+            "urlImage": image
+
+        };
 
 
-        localStorage.setItem("products", JSON.stringify(this.productsList));
-        limpiarCampos();
-        imprimmirAlertaHtml('Elemento actualizado correctamente', 'succes');
-        btnUpdate.style.display = 'none';
+        const requestOptions = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            }, body: JSON.stringify(product)
+        };
+        fetch(this.BASE_URL + `update/${id}`, requestOptions)
+            .then(response => {
+                if (response.status == 200) {
+                    imprimmirAlertaHtml('Producto actualizado correctamente')
+                    limpiarCampos();
+                    this.loadItemsFromDatabase();
+                }
+            })
+            .catch(error => {
+                alertaHtml(error, "error");
+            });
+
+
+
+        // const productObj = {
+        //     id: parseInt(inId.value),
+        //     name: product.value,
+        //     descriptions: description.value,
+        //     images: image.value,
+        //     stocks: stock.value
+        // }
+
+
+        // const indiceObjeto = this.productsList.findIndex(objeto => objeto.id === id);
+
+        // this.productsList[indiceObjeto] = { ...this.productsList[indiceObjeto], ...productObj };
+
+
+        // localStorage.setItem("products", JSON.stringify(this.productsList));
+        // limpiarCampos();
+        // imprimmirAlertaHtml('Elemento actualizado correctamente', 'succes');
+        // btnUpdate.style.display = 'none';
 
     }
 
     deleteProduct(id) {
         limpiarHtml2();
-
+        this.loadItemsFromDatabase();
 
         const requestOptions = {
             method: 'DELETE',
@@ -141,7 +176,7 @@ class ProductsController {
 
     async loadItemsFromDatabase() {
         const url = this.BASE_URL + "getProducts";
-
+        this.productsList = [];
 
         const response = await fetch(url);
         const products = await response.json();
