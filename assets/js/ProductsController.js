@@ -2,7 +2,6 @@
 class ProductsController {
 
 
-
     constructor() {
         this.productsList = [];
         this.BASE_URL = "http://localhost:8080/api/v1/products/";
@@ -42,10 +41,6 @@ class ProductsController {
         }
 
     }
-
-
-
-
 
     updateProduct(id, { name, price, description, stock, image }) {
         const product = {
@@ -125,16 +120,6 @@ class ProductsController {
 
 
     }
-
-
-
-
-
-
-
-
-
-
 
     getProduct(ID) {
         if (this.productsList.length > 0) {

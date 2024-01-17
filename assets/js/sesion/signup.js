@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 lastName: apellido.value,
                 email: email.value,
                 password: password.value,
-                id_rol: 1
+                role: { "id": 1 }
             }
 
             registrarUser(datosFormularioN);

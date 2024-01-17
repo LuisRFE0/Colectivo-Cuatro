@@ -12,7 +12,7 @@ function iniciarSesion(e) {
         password: inputPassword.value
     };
 
-    const url = 'http://localhost:8080/api/v1/users/login';
+    const url = 'http://localhost:8080/login/user';
     const requestOptions = {
         method: 'POST',
         headers: {
@@ -24,10 +24,10 @@ function iniciarSesion(e) {
     fetch(url, requestOptions)
         .then(response => response.json())
         .then(data => {
-            if (data.message.email) {
-                alertaHtml("Iniciando Sesión");
-                generarSesion(data.message);
-            }
+
+            alertaHtml("Iniciando Sesión");
+            generarSesion(data, datosObj);
+
         })
         .catch(error => {
             alertaHtml("Correo y/o contraseña incorrectos", "error");
@@ -53,12 +53,43 @@ function iniciarSesion(e) {
     // }
 }
 
-function generarSesion({ id_clientes, email, id_rol }) {
+async function generarSesion(data, datosObj) {
+
+    const url = `http://localhost:8080/api/v1/users/getUser?email=${datosObj.email}`;
+    const token = data.token;
+    let idUser, rol;
+
+
+    await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error en la solicitud: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            idUser = data.id_clientes;
+            rol = data.role.id;
+
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+
+    console.log(idUser);
+    console.log(rol);
     const sesion = {
-        sesion: true,
-        id_clientes,
-        email,
-        id_rol
+        token: data.token,
+        email: datosObj.email,
+        idUser,
+        rol
     }
 
     localStorage.setItem('sesion', JSON.stringify(sesion));

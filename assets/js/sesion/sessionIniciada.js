@@ -9,12 +9,13 @@ const datosStorage = JSON.parse(localStorage.getItem('sesion')) ? JSON.parse(loc
 
 document.addEventListener('DOMContentLoaded', () => {
     elementoSesion();
+    console.log(datosStorage);
 })
 
 
 
 function elementoSesion() {
-    if (datosStorage.sesion === true) {
+    if (datosStorage.rol == 1 || datosStorage.rol == 2) {
         ajustarNav(true);
     } else {
         ajustarNav(false);
@@ -23,6 +24,8 @@ function elementoSesion() {
 
 
 function ajustarNav(sesion) {
+
+    console.log(sesion);
     if (sesion) {
 
         enlace2.innerHTML = 'Cuenta';
@@ -47,7 +50,7 @@ function ajustarNav(sesion) {
         btnProfile.style.textAlign = 'left'
         btnProfile.textContent = 'Perfil';
 
-        if (datosStorage.id_rol == 1) {
+        if (datosStorage.rol === 1) {
             // btnProfile.href = '/Colectivo-Cuatro/assets/pages/profile/perfil.html'           //enlace para git hub
             btnProfile.href = '../../../assets/pages/profile/perfil.html';           //Enlace para local
             enlace3.appendChild(btnProfile);
