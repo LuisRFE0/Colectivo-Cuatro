@@ -83,8 +83,7 @@ async function generarSesion(data, datosObj) {
         });
 
 
-    console.log(idUser);
-    console.log(rol);
+
     const sesion = {
         token: data.token,
         email: datosObj.email,

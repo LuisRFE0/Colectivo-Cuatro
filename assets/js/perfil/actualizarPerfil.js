@@ -5,13 +5,19 @@ const correoA = document.querySelector('#perfil-correoA');
 const direccionA = document.querySelector('#perfil-direccionA');
 const apellido = document.querySelector('#perfil-apellidoA');
 const btnActualizar = document.querySelector('#actualizar-perfil');
-const { id_clientes } = JSON.parse(localStorage.getItem('sesion'))
+const { idUser, token } = JSON.parse(localStorage.getItem('sesion'))
 
 function llenarPerfil() {
 
 
 
-    fetch(`http://localhost:8080/api/v1/users/${id_clientes}`)
+    fetch(`http://localhost:8080/api/v1/users/${idUser}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
         .then(request => request.json())
         .then(response => construirPerfil(response))
 }
@@ -40,11 +46,12 @@ function actualizarPerfil(event) {
     }
 
     if (validarDatos(datosObj)) {
-        const url = `http://localhost:8080/api/v1/users/update/${id_clientes}`;
+        const url = `http://localhost:8080/api/v1/users/update/${idUser}`;
         const requestOptions = {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(datosObj)
         };

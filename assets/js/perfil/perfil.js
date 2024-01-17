@@ -5,10 +5,16 @@ window.addEventListener('DOMContentLoaded', cargardatosPerfil);
 
 function cargardatosPerfil() {
 
-    const { id_clientes } = JSON.parse(localStorage.getItem('sesion'))
+    const { idUser, token } = JSON.parse(localStorage.getItem('sesion'))
 
-    console.log(id_clientes);
-    fetch(`http://localhost:8080/api/v1/users/${id_clientes}`)
+
+    fetch(`http://localhost:8080/api/v1/users/${idUser}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
         .then(request => request.json())
         .then(response => construirPerfil(response))
 
