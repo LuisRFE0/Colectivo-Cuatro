@@ -74,11 +74,50 @@ btnPagar.addEventListener('click', (e) => {
 })
 
 
-function generarOrden() {
+async function generarOrden() {
     const { token, idUser } = JSON.parse(localStorage.getItem('sesion')) ? JSON.parse(localStorage.getItem('sesion')) : []
 
-    console.log(token);
-    console.log(idUser);
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = (today.getMonth() + 1).toString().padStart(2, '0');
+    let day = today.getDate().toString().padStart(2, '0');
 
+
+    // Formatear la fecha y hora en el formato "yyyy-mm-dd hh:mm"
+    var formattedDateTime = `${year}-${month}-${day}`;
+
+    console.log(formattedDateTime);
+    const datosObj = {
+        "idClient": idUser,
+        "orderDate": formattedDateTime,
+        "total": 598.0
+
+    }
+
+    const url = 'https://colectivo-cuatro.onrender.com/api/v1/orders/createOrder';
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datosObj)
+    };
+
+    await fetch(url, requestOptions)
+        .then(response => response.json())
+        .then(data => {
+
+            console.log(data);
+
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+    generarOrdenHasProduct();
+
+}
+
+function generarOrdenHasProduct() {
 
 }

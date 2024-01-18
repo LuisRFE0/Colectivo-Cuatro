@@ -11,7 +11,7 @@ function llenarPerfil() {
 
 
 
-    fetch(`http://localhost:8080/api/v1/users/${idUser}`, {
+    fetch(`https://colectivo-cuatro.onrender.com/api/v1/users/${idUser}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ function actualizarPerfil(event) {
     }
 
     if (validarDatos(datosObj)) {
-        const url = `http://localhost:8080/api/v1/users/update/${idUser}`;
+        const url = `https://colectivo-cuatro.onrender.com/api/v1/users/update/${idUser}`;
         const requestOptions = {
             method: 'PUT',
             headers: {

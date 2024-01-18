@@ -8,7 +8,7 @@ function cargardatosPerfil() {
     const { idUser, token } = JSON.parse(localStorage.getItem('sesion'))
 
 
-    fetch(`http://localhost:8080/api/v1/users/${idUser}`, {
+    fetch(`https://colectivo-cuatro.onrender.com/api/v1/users/${idUser}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

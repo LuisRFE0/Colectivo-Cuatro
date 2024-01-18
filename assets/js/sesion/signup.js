@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log(datos);
 
-        const url = 'http://localhost:8080/api/v1/users/createUser';
+        const url = 'https://colectivo-cuatro.onrender.com/api/v1/users/createUser';
         const requestOptions = {
             method: 'POST',
             headers: {
