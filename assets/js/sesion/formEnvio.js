@@ -1,68 +1,4 @@
-// document.addEventListener('DOMContentLoaded', () => {
 
-//     const formularioEnvio = document.querySelector('#formEnvio');
-
-//     const alerta = document.querySelector('#alerta');
-//     const name = document.querySelector('#input-nombre')
-//     const direction = document.querySelector('#input-direccion')
-//     const postcode = document.querySelector('#input-codigo-postal')
-//     const colonia = document.querySelector('#input-colonia')
-//     const country = document.querySelector('#input-nombre')
-
-//     const formularioTarjeta = document.querySelector('#formtarjeta');
-
-//     const nameTarjeta = document.querySelector('#input-nombre-tarjeta');
-//     const numberTarget = document.querySelector('#input-numero-tarjeta');
-//     const ccv = document.querySelector('#input-ccv');
-
-//     const formEnvioController = new FormEnvioController();
-
-//     formularioEnvio.addEventListener('submit', pagarEnvio);
-//     formularioTarjeta.addEventListener('submit', pagarTarjeta);
-
-//     function pagarEnvio(evento) {
-//         evento.preventDefault();
-//         const datosPago = [{
-//             name: name.value,
-//             direction: direction.value,
-//             postcode: postcode.value,
-//             colonia: colonia.value,
-//             country: country.value,
-//             numberTarget: numberTarget.value,
-//             ccv: ccv.value
-
-//         }]
-
-//     }
-
-//     function pagarTarjeta(evento) {
-//         evento.preventDefault();
-
-//         const datosTarjeta = {
-//             name: nameTarjeta.value,
-//             numberTarget: numberTarget.value,
-//             ccv: ccv.value
-//         };
-
-//         if (validarFormularioTarjeta(datosTarjeta)) {
-//             registrarPagoTarjeta(datosTarjeta);
-//         } else {
-//             return;
-//         }
-//     }
-
-//     function validarFormularioTarjeta({ name, numberTarget, ccv }) {
-//         // ... Validación del formulario de tarjeta
-//     }
-
-//     function registrarPagoTarjeta(datosTarjeta) {
-//         alertaHtml('Pago con tarjeta registrado exitosamente', 'success');
-//         // Puedes agregar aquí la lógica para registrar el pago con tarjeta
-//     }
-
-//     // ... Otras funciones y código ...
-
-// });
 
 
 const btnPagar = document.querySelector('.btn-pagar');
@@ -73,9 +9,9 @@ btnPagar.addEventListener('click', (e) => {
     generarOrden();
 })
 
-
+const { token, idUser } = JSON.parse(localStorage.getItem('sesion')) ? JSON.parse(localStorage.getItem('sesion')) : []
 async function generarOrden() {
-    const { token, idUser } = JSON.parse(localStorage.getItem('sesion')) ? JSON.parse(localStorage.getItem('sesion')) : []
+
 
     let today = new Date();
     let year = today.getFullYear();
@@ -86,15 +22,15 @@ async function generarOrden() {
     // Formatear la fecha y hora en el formato "yyyy-mm-dd hh:mm"
     var formattedDateTime = `${year}-${month}-${day}`;
 
-    console.log(formattedDateTime);
+
     const datosObj = {
-        "idClient": idUser,
+        "id_client": idUser,
         "orderDate": formattedDateTime,
-        "total": 598.0
+
 
     }
 
-    const url = 'https://colectivo-cuatro.onrender.com/api/v1/orders/createOrder';
+    const url = 'http://localhost:8080/api/v1/orders/createOrder';
     const requestOptions = {
         method: 'POST',
         headers: {
@@ -107,17 +43,101 @@ async function generarOrden() {
         .then(response => response.json())
         .then(data => {
 
-            console.log(data);
+            // console.log(data);
 
         })
         .catch(error => {
             console.log(error);
         });
 
-    generarOrdenHasProduct();
+    generarOrdenHasProduct(idUser);
 
 }
 
-function generarOrdenHasProduct() {
+async function generarOrdenHasProduct(id) {
 
+    const carrito = JSON.parse(localStorage.getItem('cart'));
+    let total = 0;
+
+    carrito.forEach(async element => {
+        let idOrden;
+
+
+        await fetch(`http://localhost:8080/api/v1/orders/getIdOrder/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                idOrden = data.id_orden;
+
+
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
+        const datosObj = {
+            "id_orden": idOrden,
+            "id_producto": element.id_producto,
+            "cantidad": "3",
+            "subtotal": element.price
+        }
+
+        total = total + element.price;
+        const objOrdenTotal = {
+            "idOrden": idOrden,
+            "total": total
+        }
+        localStorage.setItem('idOrden', JSON.stringify(objOrdenTotal));
+
+        const url = 'http://localhost:8080/api/v1/ohp/createOhp';
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datosObj)
+        };
+
+        await fetch(url, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+
+                console.log(data);
+
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
+    });
+    const Orden = JSON.parse(localStorage.getItem('idOrden'));
+    actualizarOrden(Orden);
+
+}
+
+async function actualizarOrden(Orden) {
+
+    const totalObj = {
+        "total": Orden.total,
+    }
+
+    Orden.idOrden = Orden.idOrden + 1;
+
+    const url = `http://localhost:8080/api/v1/orders/updateOrder/${Orden.idOrden}`;
+    const requestOptions = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(totalObj)
+    };
+    await fetch(url, requestOptions)
+        .then(response => response.json())
+        .then(data => {
+
+            console.log(data);
+
+        })
+        .catch(error => {
+            console.log(error);
+        });
 }
