@@ -17,7 +17,7 @@ Este proyecto fue desarrollado por:
 - Víctor Hernández   [LinkedIn Víctor](https://pages.github.com/](https://www.linkedin.com/in/victor-g-h-moysen/)https://www.linkedin.com/in/victor-g-h-moysen/).
 
 ## *Contenido* 💻
-En este repositorio encontraras todo lo relativo a la creación de un front end, las tecnologías utilizadas son:
+En este repositorio encontraras todo lo relativo a la creación de un Front-End para una ecommerce, desde la creación de las vistas hasta el consumo de la API creada en el repositorio de Back-End, las tecnologías utilizadas son:
 - HTML
 - CSS
 - Javascript
