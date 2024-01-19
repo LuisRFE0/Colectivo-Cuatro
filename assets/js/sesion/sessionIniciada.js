@@ -25,7 +25,6 @@ function elementoSesion() {
 
 function ajustarNav(sesion) {
 
-    console.log(sesion);
     if (sesion) {
 
         enlace2.innerHTML = 'Cuenta';
@@ -38,8 +37,11 @@ function ajustarNav(sesion) {
         btnSesionIniciada.style.textAlign = 'left'
         btnSesionIniciada.textContent = 'Cerrar Sesión';
         divenenlace2.appendChild(btnSesionIniciada);
+
+
         btnSesionIniciada.addEventListener('click', () => {
             localStorage.removeItem('sesion');
+            localStorage.removeItem('cart');
             window.location.href = '/Colectivo-Cuatro/index.html'                //enlace para git hub
             // window.location.href = '/'              //Enlace para local
         });
