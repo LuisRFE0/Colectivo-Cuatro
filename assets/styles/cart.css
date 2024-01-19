@@ -1,6 +1,8 @@
 #bill-container {
- 
-    padding: 3rem 3rem;
+}
+
+.order-details-empty {
+    display: inline-block;
 }
 
 #product-order-container {
