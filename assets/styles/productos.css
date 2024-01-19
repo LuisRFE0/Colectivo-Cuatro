@@ -66,6 +66,7 @@
 }
 
 .card-product-description {
+    height: 60px;
     font-size: 12px;
     font-weight: 200;
     overflow: hidden;
