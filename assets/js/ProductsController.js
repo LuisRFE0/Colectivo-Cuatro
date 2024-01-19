@@ -1,10 +1,11 @@
-
+const { idUser, token } = JSON.parse(localStorage.getItem('sesion'))
 class ProductsController {
 
 
     constructor() {
         this.productsList = [];
-        this.BASE_URL = "https://colectivo-cuatro.onrender.com/api/v1/products/";
+        this.BASE_URL = "http://localhost:8080/api/v1/products/";
+
     }
 
     async addItem(name, description, image, stock, price) {
@@ -54,23 +55,25 @@ class ProductsController {
         };
 
 
-        const requestOptions = {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            }, body: JSON.stringify(product)
-        };
-        fetch(this.BASE_URL + `update/${id}`, requestOptions)
-            .then(response => {
-                if (response.status == 200) {
-                    imprimmirAlertaHtml('Producto actualizado correctamente')
-                    limpiarCampos();
-                    this.loadItemsFromDatabase();
-                }
+        const requestOptions =
+            fetch(this.BASE_URL + `update/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+
+                }, body: JSON.stringify(product)
             })
-            .catch(error => {
-                alertaHtml(error, "error");
-            });
+                .then(response => {
+                    if (response.status == 200) {
+                        imprimmirAlertaHtml('Producto actualizado correctamente')
+                        limpiarCampos();
+                        this.loadItemsFromDatabase();
+                    }
+                })
+                .catch(error => {
+                    alertaHtml(error, "error");
+                });
 
 
 
@@ -102,7 +105,8 @@ class ProductsController {
         const requestOptions = {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
         };
 

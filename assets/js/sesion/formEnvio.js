@@ -22,11 +22,12 @@ async function generarOrden() {
         "orderDate": formattedDateTime,
     }
 
-    const url = 'https://colectivo-cuatro.onrender.com/api/v1/orders/createOrder';
+    const url = 'http://localhost:8080/api/v1/orders/createOrder';
     const requestOptions = {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(datosObj)
     };
@@ -59,11 +60,12 @@ async function generarOrdenHasProduct(id) {
             "subtotal": element.price
         }
 
-        const url = 'https://colectivo-cuatro.onrender.com/api/v1/ohp/createOhp';
+        const url = 'http://localhost:8080/api/v1/ohp/createOhp';
         const requestOptions = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(datosObj)
         };
@@ -91,11 +93,12 @@ async function actualizarOrden(id_orden) {
     }
 
 
-    const url = `https://colectivo-cuatro.onrender.com/api/v1/orders/updateOrder/${id_orden}`;
+    const url = `http://localhost:8080/api/v1/orders/updateOrder/${id_orden}`;
     const requestOptions = {
         method: 'PUT',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(totalObj)
     };
@@ -113,5 +116,5 @@ async function actualizarOrden(id_orden) {
     localStorage.removeItem('total');
     localStorage.removeItem('cart');
 
-    window.location.href = '../../../index.html';
+    window.location.href = '/Colectivo-Cuatro/index.html';
 }
