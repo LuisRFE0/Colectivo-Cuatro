@@ -40,8 +40,8 @@ function ajustarNav(sesion) {
         divenenlace2.appendChild(btnSesionIniciada);
         btnSesionIniciada.addEventListener('click', () => {
             localStorage.removeItem('sesion');
-            // window.location.href = '/Colectivo-Cuatro/index.html'                //enlace para git hub
-            window.location.href = '/'              //Enlace para local
+            window.location.href = '/Colectivo-Cuatro/index.html'                //enlace para git hub
+            // window.location.href = '/'              //Enlace para local
         });
 
         const btnProfile = document.createElement('a');
