@@ -92,7 +92,7 @@ async function generarSesion(data, datosObj) {
     }
 
     localStorage.setItem('sesion', JSON.stringify(sesion));
-    window.location.href = '/';
+    window.location.href = '../../../index.html';
 }
 
 
