@@ -2,7 +2,6 @@ const productsController = new ProductsController();
 
 (function () {
     loadCart();
-    orderDetails();
 })();
 
 function addItemCard(product) {
@@ -43,6 +42,24 @@ function orderDetails() {
 }
 
 
+function orderDetailsEmpty() {
+    
+    const orderDetailsContainer = document.getElementById('bill-container');
+    orderDetailsContainer.classList.add('text-center');
+    orderDetailsContainer.innerHTML = `
+    <div id="order-animation"></div>`;
+    let animation = lottie.loadAnimation({
+        container: document.getElementById('order-animation'), // el div donde se mostrará la animación
+        renderer: 'svg', // el tipo de renderizado
+        loop: true, // si la animación se repite o no
+        autoplay: true, // si la animación se reproduce automáticamente o no
+        path: '../js/order-empty.json' // la ruta al archivo JSON que contiene la animación
+
+    });
+
+    orderDetailsContainer.innerHTML += orderHTML;
+}
+
 function removeProduct(e) {
     let { id, tagName, parentNode } = e.target;
 
@@ -55,20 +72,40 @@ function removeProduct(e) {
     const cartBadge = document.getElementById('cart-nav');
     cartBadge.setAttribute('value', cart.length - 1);
     loadCart();
-    orderDetails();
 }
 
 function loadCart() {
-    const cart = JSON.parse(localStorage.getItem('cart'))
+    let response = false;
+    if (localStorage.getItem('cart') && JSON.parse(localStorage.getItem('cart')).length != 0) {
+        const cart = JSON.parse(localStorage.getItem('cart'));
 
-    for (let i = 0, size = cart.length; i < size; i++) {
-        const item = cart[i];
-        addItemCard(item);
+        for (let i = 0, size = cart.length; i < size; i++) {
+            const item = cart[i];
+            addItemCard(item);
+        }
+
+        cart.map(product => {
+            const parent = document.getElementById(`${product.id_producto}`);
+            parent.addEventListener('click', removeProduct, false);
+        });
+        orderDetails();
+        response = true;
+    } else {
+        const productContainer = document.getElementById('product-order-container');
+        productContainer.classList.add('text-center');
+        productContainer.innerHTML = `
+        <div id="cart-animation"></div>`;
+        let animation = lottie.loadAnimation({
+            container: document.getElementById('cart-animation'), // el div donde se mostrará la animación
+            renderer: 'svg', // el tipo de renderizado
+            loop: true, // si la animación se repite o no
+            autoplay: true, // si la animación se reproduce automáticamente o no
+            path: '../js/cart.json' // la ruta al archivo JSON que contiene la animación
+
+        });
+        orderDetailsEmpty();
     }
+    return response;
 
-    cart.map(product => {
-        const parent = document.getElementById(`${product.id_producto}`);
-        parent.addEventListener('click', removeProduct, false);
-    });
 
 }

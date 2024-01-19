@@ -76,7 +76,33 @@ input[type=number]::-webkit-inner-spin-button {
     color: var(--azul);
     font-weight: 700;
 }
+
+#cart-animation, #order-animation{
+    height: 320px; 
+    width: 320px;
+    display: inline-block;
+
+}
+
+
+@media only screen and (max-width: 992px) {
+
+    #product-order-container {
+        border: none;
+    }
+}
+
+/* Estilos para tabletas */
+@media only screen and (max-width: 768px) {
+
+ 
+}
+
 @media only screen and (max-width: 540px) { 
+    #order-animation, #cart-animation {
+        height: 220px; 
+        width: 220px;
+    }
     #product-container {
         margin-left: 1rem;
         padding: 1rem 0rem;
@@ -89,8 +115,5 @@ input[type=number]::-webkit-inner-spin-button {
 
     #product-unitary-price {
         margin-top: 0.5rem;
-    }
-    #product-order-container {
-        border: none;
     }
 }

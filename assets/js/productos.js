@@ -50,7 +50,8 @@ async function loadCardsListFromItemsController() {
     <li>1</li>
     <li  class="active">2</li>
     <li>3</li>
-    </ul>`
+    </ul>
+    `
 
     addClickEvent();
     loadItem();
@@ -82,9 +83,29 @@ function addClickEvent() {
     function handleClickCart(e) {
         let { id, tagName, parentNode } = e.target;
         disableButton(id)
-        addProduct(id.substring(2));
+        if (activeSesion()) {
+            addProduct(id.substring(2));
+        } else {
+            alertCart();
+        }
     }
 
+}
+
+function activeSesion() {
+    let response = false;
+    if (localStorage.getItem('sesion')) {
+        response = true;
+    }
+    return response;
+}
+
+function alertCart() {
+    document.getElementById("alert-sesion-cart").innerHTML =  `   <div class="mt-3 alert alert-warning alert-dismissible fade show" role="alert" >
+    <strong>¡Inicia sesión!</strong> Para agregar al carrito es necesario iniciar sesión.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    
+  </div>`;
 }
 
 function addProduct(id) {
