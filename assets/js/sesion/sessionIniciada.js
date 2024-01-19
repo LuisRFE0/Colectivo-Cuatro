@@ -51,12 +51,12 @@ function ajustarNav(sesion) {
         btnProfile.textContent = 'Perfil';
 
         if (datosStorage.rol === 1) {
-            // btnProfile.href = '/Colectivo-Cuatro/assets/pages/profile/perfil.html'           //enlace para git hub
-            btnProfile.href = '../../../assets/pages/profile/perfil.html';           //Enlace para local
+            btnProfile.href = '/Colectivo-Cuatro/assets/pages/profile/perfil.html'           //enlace para git hub
+            // btnProfile.href = '../../../assets/pages/profile/perfil.html';           //Enlace para local
             enlace3.appendChild(btnProfile);
         } else {
-            // btnProfile.href = '/Colectivo-Cuatro/assets/pages/admin/formulario-producto.html'           //enlace para git hub
-            btnProfile.href = '../../../assets/pages/admin/formulario-producto.html';           //Enlace para local
+            btnProfile.href = '/Colectivo-Cuatro/assets/pages/admin/formulario-producto.html'           //enlace para git hub
+            // btnProfile.href = '../../../assets/pages/admin/formulario-producto.html';           //Enlace para local
             enlace3.appendChild(btnProfile);
         }
 

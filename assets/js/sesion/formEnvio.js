@@ -45,18 +45,12 @@ async function generarOrden() {
 
 }
 
-function generarOrdenHasProduct(id) {
+async function generarOrdenHasProduct(id) {
 
     const carrito = JSON.parse(localStorage.getItem('cart'));
     const { id_orden } = JSON.parse(localStorage.getItem('idOrden'));
 
     carrito.forEach(async element => {
-        await fetch(`https://colectivo-cuatro.onrender.com/api/v1/orders/getIdOrder/${id}`)
-            .then(response => response.json())
-            .then(data => { })
-            .catch(error => {
-                console.log(error);
-            });
 
         const datosObj = {
             "id_orden": id_orden,
@@ -73,6 +67,7 @@ function generarOrdenHasProduct(id) {
             },
             body: JSON.stringify(datosObj)
         };
+
         await fetch(url, requestOptions)
             .then(response => response.json())
             .then(data => {
@@ -88,7 +83,7 @@ function generarOrdenHasProduct(id) {
 
 }
 
-function actualizarOrden(id_orden) {
+async function actualizarOrden(id_orden) {
     const total = JSON.parse(localStorage.getItem('total'));
 
     const totalObj = {
@@ -104,7 +99,7 @@ function actualizarOrden(id_orden) {
         },
         body: JSON.stringify(totalObj)
     };
-    fetch(url, requestOptions)
+    await fetch(url, requestOptions)
         .then(response => response.json())
         .then(data => {
             // console.log(data);
@@ -113,6 +108,10 @@ function actualizarOrden(id_orden) {
             console.log(error);
         });
 
+    alert("Gracias por comprar en Colectivo Cuatro")
     localStorage.removeItem('idOrden');
     localStorage.removeItem('total');
+    localStorage.removeItem('cart');
+
+    window.location.href = '/';
 }
