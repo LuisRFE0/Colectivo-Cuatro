@@ -113,5 +113,5 @@ async function actualizarOrden(id_orden) {
     localStorage.removeItem('total');
     localStorage.removeItem('cart');
 
-    window.location.href = '/';
+    window.location.href = '../../../index.html';
 }
