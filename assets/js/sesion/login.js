@@ -12,7 +12,7 @@ function iniciarSesion(e) {
         password: inputPassword.value
     };
 
-    const url = 'http://localhost:8080/login/user';
+    const url = 'https://colectivo-cuatro.onrender.com/login/user';
     const requestOptions = {
         method: 'POST',
         headers: {
@@ -55,7 +55,7 @@ function iniciarSesion(e) {
 
 async function generarSesion(data, datosObj) {
 
-    const url = `http://localhost:8080/api/v1/users/getUser?email=${datosObj.email}`;
+    const url = `https://colectivo-cuatro.onrender.com/api/v1/users/getUser?email=${datosObj.email}`;
     const token = data.token;
     let idUser, rol;
 

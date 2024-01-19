@@ -22,7 +22,7 @@ async function generarOrden() {
         "orderDate": formattedDateTime,
     }
 
-    const url = 'http://localhost:8080/api/v1/orders/createOrder';
+    const url = 'https://colectivo-cuatro.onrender.com/api/v1/orders/createOrder';
     const requestOptions = {
         method: 'POST',
         headers: {
@@ -60,7 +60,7 @@ async function generarOrdenHasProduct(id) {
             "subtotal": element.price
         }
 
-        const url = 'http://localhost:8080/api/v1/ohp/createOhp';
+        const url = 'https://colectivo-cuatro.onrender.com/api/v1/ohp/createOhp';
         const requestOptions = {
             method: 'POST',
             headers: {
@@ -93,7 +93,7 @@ async function actualizarOrden(id_orden) {
     }
 
 
-    const url = `http://localhost:8080/api/v1/orders/updateOrder/${id_orden}`;
+    const url = `https://colectivo-cuatro.onrender.com/api/v1/orders/updateOrder/${id_orden}`;
     const requestOptions = {
         method: 'PUT',
         headers: {
