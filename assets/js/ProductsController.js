@@ -1,4 +1,4 @@
-const { idUser, token } = JSON.parse(localStorage.getItem('sesion'))
+
 class ProductsController {
 
 
@@ -9,6 +9,7 @@ class ProductsController {
     }
 
     async addItem(name, description, image, stock, price) {
+        const { token } = JSON.parse(localStorage.getItem('sesion'))
         const url = this.BASE_URL + "createProduct";
 
         const product = {
@@ -24,7 +25,8 @@ class ProductsController {
         const requestOptions = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(product)
         };
@@ -55,25 +57,25 @@ class ProductsController {
         };
 
 
-        const requestOptions =
-            fetch(this.BASE_URL + `update/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+        const { token } = JSON.parse(localStorage.getItem('sesion'))
+        fetch(this.BASE_URL + `update/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
 
-                }, body: JSON.stringify(product)
+            }, body: JSON.stringify(product)
+        })
+            .then(response => {
+                if (response.status == 200) {
+                    imprimmirAlertaHtml('Producto actualizado correctamente')
+                    limpiarCampos();
+                    this.loadItemsFromDatabase();
+                }
             })
-                .then(response => {
-                    if (response.status == 200) {
-                        imprimmirAlertaHtml('Producto actualizado correctamente')
-                        limpiarCampos();
-                        this.loadItemsFromDatabase();
-                    }
-                })
-                .catch(error => {
-                    alertaHtml(error, "error");
-                });
+            .catch(error => {
+                alertaHtml(error, "error");
+            });
 
 
 
@@ -99,6 +101,7 @@ class ProductsController {
     }
 
     deleteProduct(id) {
+        const { token } = JSON.parse(localStorage.getItem('sesion'))
         limpiarHtml2();
         this.loadItemsFromDatabase();
 
@@ -126,6 +129,7 @@ class ProductsController {
     }
 
     getProduct(ID) {
+        const { token } = JSON.parse(localStorage.getItem('sesion'))
         if (this.productsList.length > 0) {
 
             if (this.productsList.some(elemento => elemento.id_producto === ID)) {
