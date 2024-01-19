@@ -1,6 +1,3 @@
-
-
-
 const btnPagar = document.querySelector('.btn-pagar');
 
 btnPagar.addEventListener('click', (e) => {
@@ -17,20 +14,15 @@ async function generarOrden() {
     let year = today.getFullYear();
     let month = (today.getMonth() + 1).toString().padStart(2, '0');
     let day = today.getDate().toString().padStart(2, '0');
-
-
-    // Formatear la fecha y hora en el formato "yyyy-mm-dd hh:mm"
-    var formattedDateTime = `${year}-${month}-${day}`;
+    let formattedDateTime = `${year}-${month}-${day}`;
 
 
     const datosObj = {
         "id_client": idUser,
         "orderDate": formattedDateTime,
-
-
     }
 
-    const url = 'http://localhost:8080/api/v1/orders/createOrder';
+    const url = 'https://colectivo-cuatro.onrender.com/api/v1/orders/createOrder';
     const requestOptions = {
         method: 'POST',
         headers: {
@@ -42,53 +34,38 @@ async function generarOrden() {
     await fetch(url, requestOptions)
         .then(response => response.json())
         .then(data => {
-
-            // console.log(data);
-
+            localStorage.setItem('idOrden', JSON.stringify({ "id_orden": data.id_orden }));
         })
         .catch(error => {
             console.log(error);
         });
 
+
     generarOrdenHasProduct(idUser);
 
 }
 
-async function generarOrdenHasProduct(id) {
+function generarOrdenHasProduct(id) {
 
     const carrito = JSON.parse(localStorage.getItem('cart'));
-    let total = 0;
+    const { id_orden } = JSON.parse(localStorage.getItem('idOrden'));
 
     carrito.forEach(async element => {
-        let idOrden;
-
-
-        await fetch(`http://localhost:8080/api/v1/orders/getIdOrder/${id}`)
+        await fetch(`https://colectivo-cuatro.onrender.com/api/v1/orders/getIdOrder/${id}`)
             .then(response => response.json())
-            .then(data => {
-                idOrden = data.id_orden;
-
-
-            })
+            .then(data => { })
             .catch(error => {
                 console.log(error);
             });
 
         const datosObj = {
-            "id_orden": idOrden,
+            "id_orden": id_orden,
             "id_producto": element.id_producto,
-            "cantidad": "3",
+            "cantidad": "1",
             "subtotal": element.price
         }
 
-        total = total + element.price;
-        const objOrdenTotal = {
-            "idOrden": idOrden,
-            "total": total
-        }
-        localStorage.setItem('idOrden', JSON.stringify(objOrdenTotal));
-
-        const url = 'http://localhost:8080/api/v1/ohp/createOhp';
+        const url = 'https://colectivo-cuatro.onrender.com/api/v1/ohp/createOhp';
         const requestOptions = {
             method: 'POST',
             headers: {
@@ -96,33 +73,30 @@ async function generarOrdenHasProduct(id) {
             },
             body: JSON.stringify(datosObj)
         };
-
         await fetch(url, requestOptions)
             .then(response => response.json())
             .then(data => {
-
-                console.log(data);
-
+                // console.log(data);
             })
             .catch(error => {
                 console.log(error);
             });
 
     });
-    const Orden = JSON.parse(localStorage.getItem('idOrden'));
-    actualizarOrden(Orden);
+
+    actualizarOrden(id_orden);
 
 }
 
-async function actualizarOrden(Orden) {
+function actualizarOrden(id_orden) {
+    const total = JSON.parse(localStorage.getItem('total'));
 
     const totalObj = {
-        "total": Orden.total,
+        "total": total.total
     }
 
-    Orden.idOrden = Orden.idOrden + 1;
 
-    const url = `http://localhost:8080/api/v1/orders/updateOrder/${Orden.idOrden}`;
+    const url = `https://colectivo-cuatro.onrender.com/api/v1/orders/updateOrder/${id_orden}`;
     const requestOptions = {
         method: 'PUT',
         headers: {
@@ -130,14 +104,15 @@ async function actualizarOrden(Orden) {
         },
         body: JSON.stringify(totalObj)
     };
-    await fetch(url, requestOptions)
+    fetch(url, requestOptions)
         .then(response => response.json())
         .then(data => {
-
-            console.log(data);
-
+            // console.log(data);
         })
         .catch(error => {
             console.log(error);
         });
+
+    localStorage.removeItem('idOrden');
+    localStorage.removeItem('total');
 }

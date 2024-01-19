@@ -30,6 +30,7 @@ function orderDetails() {
         total += element.price;
     });
 
+    localStorage.setItem('total', JSON.stringify({ "total": total }))
 
     const orderHTML = `   <div class="row bill">
         <div class="col-6 order-titles">Envio: <br> Subtotal: <br> Descuento:  <br> <span class="order-total"  >Total</span> </div>

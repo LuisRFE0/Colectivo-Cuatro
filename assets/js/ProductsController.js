@@ -4,7 +4,7 @@ class ProductsController {
 
     constructor() {
         this.productsList = [];
-        this.BASE_URL = "http://localhost:8080/api/v1/products/";
+        this.BASE_URL = "https://colectivo-cuatro.onrender.com/api/v1/products/";
     }
 
     async addItem(name, description, image, stock, price) {
