@@ -92,7 +92,7 @@ async function generarSesion(data, datosObj) {
     }
 
     localStorage.setItem('sesion', JSON.stringify(sesion));
-    window.location.href = '../../../index.html';
+    window.location.href = '/Colectivo-Cuatro/index.html';
 }
 
 
